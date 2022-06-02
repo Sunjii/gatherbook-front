@@ -7,6 +7,7 @@ import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 import Navibar from "../components/Navibar";
 import { Alert, Input, Textarea } from "@material-tailwind/react";
+import { SERVER_ADDRESS } from "../constants";
 
 const Write = () => {
   const navigate = useNavigate();
@@ -61,13 +62,9 @@ const Write = () => {
       // Form data
       const fd = new FormData();
       fd.append("data", target);
-      //fd.append("sentence_count", maxLen);
-      //fd.append("temperature", temperature);
-      //fd.append("repetition", repetPenalty);
-      // http://127.0.0.1:8001/predict
       // POST request //
       await axios
-        .post("http://101.101.211.225:30001/spellcheck", fd, {
+        .post(`${SERVER_ADDRESS}/spellcheck`, fd, {
           headers: {
             "Content-Type": `stringpart/form-data`,
           },
@@ -132,7 +129,6 @@ const Write = () => {
       // Object.values(imgBase64).forEach((file) => fd.append("file", file)); base64
       console.log("imgFile fd 탑재");
       console.log(imgFileData);
-      //fd.append("file", imgFile);
       fd.append("file", imgFileData);
     } else {
       fd.append("file", null);
@@ -142,10 +138,8 @@ const Write = () => {
     fd.append("title", "제목이다");
 
     console.log(fd);
-    // http://localhost:8001/submit
-    // http://101.101.211.225:30001/uploadimage
     await axios
-      .post("http://101.101.211.225:30001/submit", fd, {
+      .post(`${SERVER_ADDRESS}/submit`, fd, {
         headers: {
           "Content-Type": `multipart/form-data;`,
         },
@@ -171,7 +165,7 @@ const Write = () => {
   const onPingPong = (e) => {
     e.preventDefault();
     const res = axios
-      .get("http://101.101.211.225:30001/")
+      .get(`${SERVER_ADDRESS}/`)
       .then(function (res) {
         console.log(res);
         console.log(res.data);
