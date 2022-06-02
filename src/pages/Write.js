@@ -6,7 +6,7 @@ import axios from "axios";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 import Navibar from "../components/Navibar";
-import { Alert, Input, Textarea } from "@material-tailwind/react";
+import { Alert, Checkbox, Input, Textarea } from "@material-tailwind/react";
 import { SERVER_ADDRESS } from "../constants";
 
 const Write = () => {
@@ -15,6 +15,8 @@ const Write = () => {
   const [text, setText] = useState("");
   const [result, setResult] = useState("");
   const submitRef = useRef();
+
+  const [useAPI, setUseAPI] = useState(false);
 
   const [open, setOpen] = useState(false);
 
@@ -48,6 +50,11 @@ const Write = () => {
     console.log(e);
   };
 
+  // 맞춤법 교정 사용 여부
+  const checkHandler = (e) => {
+    setUseAPI(!useAPI);
+  };
+
   // input 입력 - 서버로 string 전송 후 predict string을 받아옴
   const onKeyPress = async (e) => {
     if (e.key === "Enter") {
@@ -62,9 +69,13 @@ const Write = () => {
       // Form data
       const fd = new FormData();
       fd.append("data", target);
+      fd.append("sentence_count", maxLen);
+      fd.append("temperature", temperature);
+      fd.append("repetition", repetPenalty);
+      fd.append("grammar_check", useAPI);
       // POST request //
       await axios
-        .post(`${SERVER_ADDRESS}/spellcheck`, fd, {
+        .post(`${SERVER_ADDRESS}/predict`, fd, {
           headers: {
             "Content-Type": `stringpart/form-data`,
           },
@@ -72,7 +83,7 @@ const Write = () => {
         .then((res) => {
           if (res.data) {
             // Result Text Area에 들어감
-            const going = target + " " + res.data.pred;
+            const going = " " + res.data.generate_text;
             setResult(result.concat(going + " "));
           }
         })
@@ -214,6 +225,11 @@ const Write = () => {
                 value={text}
                 onKeyPress={onKeyPress}
                 variant="outlined"
+              />
+              <Checkbox
+                label="맞춤법 교정 사용"
+                checked={useAPI}
+                onChange={(e) => checkHandler(e)}
               />
             </div>
             <div>
