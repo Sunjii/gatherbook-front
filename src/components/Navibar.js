@@ -34,6 +34,12 @@ const Navibar = () => {
           >
             구경하기
           </Link>
+          <a
+            className="mx-4 flex items-center font-bold hover:text-amber-400"
+            href="https://github.com/boostcampaitech3/final-project-level3-nlp-06"
+          >
+            Github
+          </a>
         </div>
       </div>
     </Navbar>
