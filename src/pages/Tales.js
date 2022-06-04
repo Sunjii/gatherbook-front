@@ -11,6 +11,7 @@ const Tales = () => {
   const [pageNum, setPageNum] = useState(0);
 
   const [loading, setLoading] = useState(false);
+  const [serverState, setServerState] = useState(true);
   const defaultImg =
     "https://mblogthumb-phinf.pstatic.net/MjAxOTA0MTFfMyAg/MDAxNTU0OTY0NDExODM3.yq8kEVXlmOBw6q-5jyZceq2rxtUAfmCn00KjOfjf6CEg.K3qeB83x7EnikNTcr7XyDiB9Li9VOHcXV6t_6JUo7iog.PNG.goproblem/2gsjgna1uruvUuS7ndh9YqVwYGPLVszbFLwwpAYXZ1rkyz7vKAbhJvHdPRzCvhGfPWQdhkcqKLhnajnHFpGdgkDq3R1XmTFaFxUfKbVyyA3iDi1Fzv.png?type=w2";
 
@@ -34,10 +35,13 @@ const Tales = () => {
           // 페이지 개수는 전체/6 입니다.
           setTotalCount(res.data);
           setPageCount(Math.floor(res.data / 6) + 1);
+          setServerState(true);
         }
       })
       .catch((err) => {
-        alert(err);
+        alert(
+          err + "\n현재 서버가 중지된 상태입니다. 관리자에게 문의해주세요!"
+        );
       });
   };
 
@@ -76,7 +80,7 @@ const Tales = () => {
           }
         })
         .catch((err) => {
-          alert(err);
+          //alert(err);
         });
       //break;
     }
@@ -98,7 +102,7 @@ const Tales = () => {
     // 페이지네이션
 
     // setTotalCount 비동기 처리
-  }, [totalCount]);
+  }, [totalCount, serverState]);
 
   const onTest = (e) => {
     console.log(tales);

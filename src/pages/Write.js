@@ -9,6 +9,7 @@ import Navibar from "../components/Navibar";
 import {
   Alert,
   Checkbox,
+  Chip,
   Input,
   Textarea,
   Tooltip,
@@ -18,6 +19,7 @@ import { SERVER_ADDRESS } from "../constants";
 
 const Write = () => {
   const navigate = useNavigate();
+  const [serverPing, setServerPing] = useState(false);
 
   const [text, setText] = useState("");
   const [result, setResult] = useState("");
@@ -49,22 +51,11 @@ const Write = () => {
 
   // loading
   useEffect(() => {
-    console.log("로딩");
     autoResizeTA();
   }, [isPredLoading, result, proposalList]);
-
-  // Modal
-  const [modalOpen, setModalOpen] = useState(false);
-  const openModal = () => {
-    setModalOpen(true);
-  };
-  const closeModal = () => {
-    setModalOpen(false);
-  };
-  const sendResult = (e) => {
-    setModalOpen(false);
-    console.log(e);
-  };
+  useEffect(() => {
+    onPingPong();
+  }, []);
 
   // 맞춤법 교정 사용 여부
   const checkHandler = (e) => {
@@ -81,7 +72,6 @@ const Write = () => {
   const autoResizeTA = () => {
     let textarea = document.querySelector(".autoTextarea");
     if (textarea) {
-      console.log("resize");
       textarea.style.height = "auto";
       let height = textarea.scrollHeight;
       textarea.style.height = `${height + 8}px`;
@@ -128,6 +118,7 @@ const Write = () => {
         })
         .catch((err) => {
           alert(err);
+          loadingHandler(true);
         });
       const e_t = new Date();
       console.log(e_t - s_t);
@@ -222,15 +213,17 @@ const Write = () => {
   };
 
   const onPingPong = (e) => {
-    e.preventDefault();
+    //e.preventDefault();
     const res = axios
       .get(`${SERVER_ADDRESS}/`)
       .then(function (res) {
-        console.log(res);
-        console.log(res.data);
+        //console.log(res);
+        //console.log(res.data);
+        setServerPing(true);
       })
       .catch(function (error) {
-        console.log(error);
+        //console.log(error);
+        setServerPing(false);
       });
   };
 
@@ -240,8 +233,19 @@ const Write = () => {
         <Navibar />
       </div>
       <main>
-        <div className="max-w-screen-xlt pb-20 px-40">
+        <div className="max-w-screen-xlt pb-20 px-4 lg:px-40">
           <div className="max-w-screen-xlt flex-initial flex-col justify-center items-center py-20 pb-10">
+            <div>
+              {serverPing ? (
+                <Tooltip content="현재 AI 서버가 작동중입니다.">
+                  <Chip color="cyan" value="서버 연결됨" />
+                </Tooltip>
+              ) : (
+                <Tooltip content="현재 AI 서버가 중지된 상태입니다.">
+                  <Chip color="red" value="서버 끊어짐" />
+                </Tooltip>
+              )}
+            </div>
             <div className="max-w-screen-md mx-auto py-8">
               <div className="text-center py-4">
                 <Typography variant="h2" color="amber">
