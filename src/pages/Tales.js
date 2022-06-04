@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { SpinnerCircular } from "spinners-react";
 import Navibar from "../components/Navibar";
 import TaleCard from "../components/Talecard";
 import { SERVER_ADDRESS } from "../constants";
@@ -10,6 +11,8 @@ const Tales = () => {
   const [pageNum, setPageNum] = useState(0);
 
   const [loading, setLoading] = useState(false);
+  const defaultImg =
+    "https://mblogthumb-phinf.pstatic.net/MjAxOTA0MTFfMyAg/MDAxNTU0OTY0NDExODM3.yq8kEVXlmOBw6q-5jyZceq2rxtUAfmCn00KjOfjf6CEg.K3qeB83x7EnikNTcr7XyDiB9Li9VOHcXV6t_6JUo7iog.PNG.goproblem/2gsjgna1uruvUuS7ndh9YqVwYGPLVszbFLwwpAYXZ1rkyz7vKAbhJvHdPRzCvhGfPWQdhkcqKLhnajnHFpGdgkDq3R1XmTFaFxUfKbVyyA3iDi1Fzv.png?type=w2";
 
   // tales 에는 {'id', 'title', 'author', 'text', 'imge'}가 있음
   const [tale, setTale] = useState({
@@ -23,7 +26,7 @@ const Tales = () => {
 
   const getTalesCount = async (e) => {
     const response = await axios
-      .get(`${SERVER_ADDRESS}/tales`, { timeout: 1000 })
+      .get(`${SERVER_ADDRESS}/tales`, { timeout: 10000 })
       .then((res) => {
         if (res) {
           // rest.data 에는 전체 개수가 옵니다.
@@ -43,12 +46,13 @@ const Tales = () => {
     // 먼저 6개의 쿼리를 가져옵니다.
     // 역순으로 가져와야겠지..?
     const talesNum = totalCount;
+    // TODO: talesNum 수치를 수정해야함
     console.log(`${talesNum} tale is exist`);
 
     for (let idx = 0; idx < talesNum; idx++) {
       console.log(`idx: ${idx}`);
       await axios
-        .get(`${SERVER_ADDRESS}/tales/${idx}`)
+        .get(`${SERVER_ADDRESS}/tales/${idx}`, { timeout: 10000 })
         .then((res) => {
           // res 에는 데이터가 옵니다..
           if (res.data.message) {
@@ -63,7 +67,7 @@ const Tales = () => {
               title: res.data.title,
               author: res.data.author,
               text: res.data.text,
-              imgurl: res.data.chg_img_url,
+              imgbs64: res.data.chg_img_bs64,
             };
             console.log(inputForm);
 
@@ -76,6 +80,11 @@ const Tales = () => {
         });
       //break;
     }
+  };
+
+  // page 클릭에 따라서 해당되는 쿼리를 돌립니다.
+  const onPageClick = (e) => {
+    console.log(e.target.innerText);
   };
 
   useEffect(() => {
@@ -97,30 +106,46 @@ const Tales = () => {
 
   return (
     <>
-      {loading ? "done" : "Not Yet!"}
       <div className="absolute w-full z-20">
         <Navibar />
       </div>
-      <main>
-        <div className="relative pt-16 pb-32 flex flex-col items-center justify-center">
-          <h1>구경 하기!</h1>
-          <button onClick={onTest}>Test Button</button>
-          {pageCount ? pageCount : "none"}
-        </div>
-        <div className="flex flex-row flex-wrap">
-          {tales
-            ? tales.map((tale) => (
-                <TaleCard
-                  id={tale.id}
-                  title={tale.title}
-                  author={tale.author}
-                  text={tale.text}
-                  imgurl="https://i.imgur.com/FBVlRyg.png"
-                />
-              ))
-            : "NONE"}
-        </div>
-      </main>
+      {loading ? (
+        <main>
+          <div className="relative pt-16 pb-32 flex flex-col items-center justify-center">
+            <h1>구경 하기!</h1>
+            <button onClick={onTest}>Test Button</button>
+            <h1>Page</h1>
+            <div className="flex flex-row gap-4">
+              {pageCount
+                ? [...Array(pageCount)].map((_, idx) => (
+                    <div className="cursor-pointer" onClick={onPageClick}>
+                      {idx}
+                    </div>
+                  ))
+                : "none"}
+            </div>
+          </div>
+          <div className="px-8 flex flex-row flex-wrap gap-10">
+            {tales
+              ? tales.map((tale) => (
+                  <TaleCard
+                    id={tale.id}
+                    title={tale.title}
+                    author={tale.author}
+                    text={tale.text}
+                    imgbs64={tale.imgbs64 ? tale.imgbs64 : "no"}
+                  />
+                ))
+              : "NONE"}
+          </div>
+        </main>
+      ) : (
+        <main>
+          <div className="relative h-screen pt-16 pb-32 flex items-center justify-center">
+            <SpinnerCircular size={150} enabled={true} />
+          </div>
+        </main>
+      )}
     </>
   );
 };
