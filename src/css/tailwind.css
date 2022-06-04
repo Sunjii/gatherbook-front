@@ -2062,6 +2062,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding-top: 3rem;
 }
 
+.pt-20 {
+  padding-top: 5rem;
+}
+
 .pb-80 {
   padding-bottom: 20rem;
 }
@@ -2092,14 +2096,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .pt-6 {
   padding-top: 1.5rem;
-}
-
-.pt-14 {
-  padding-top: 3.5rem;
-}
-
-.pt-20 {
-  padding-top: 5rem;
 }
 
 .text-left {
@@ -2712,7 +2708,8 @@ Ensure the default browser behavior of the `hidden` attribute.
 .headText {
   font-size: 7rem;
   font-family: var(--secondary-font);
-  color: var(--secondary-font-color);
+  /*color: var(--secondary-font-color);*/
+  color: lightyellow;
   font-weight: 100;
   line-height: 0.4;
   letter-spacing: 2px;

@@ -40,7 +40,8 @@
 .headText {
   font-size: 7rem;
   font-family: var(--secondary-font);
-  color: var(--secondary-font-color);
+  /*color: var(--secondary-font-color);*/
+  color: lightyellow;
   font-weight: 100;
   line-height: 0.4;
   letter-spacing: 2px;
