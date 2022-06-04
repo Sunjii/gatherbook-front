@@ -7,11 +7,15 @@ const Home = () => {
       <div className="absolute w-full z-20">
         <Navibar />
       </div>
-      <main></main>
+      <main>
+        <div className="pb-80 px-40 bg-brown-400">
+          <div className="pb-80 max-h-screen bg-red-400 flex-initial flex-col">
+            B
+          </div>
+        </div>
+      </main>
     </>
   );
 };
 
 export default Home;
-// tailwindcss -i ./src/css/style.css -o ./src/css/tailwind.css
-//

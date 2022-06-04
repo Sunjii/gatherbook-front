@@ -1,4 +1,7 @@
-import React from "react";
+import { Environment } from "@react-three/drei";
+import { Canvas } from "@react-three/fiber";
+import React, { Suspense } from "react";
+import Model from "../components/Model";
 import Navibar from "../components/Navibar";
 
 const About = () => {
