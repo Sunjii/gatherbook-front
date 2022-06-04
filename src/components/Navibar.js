@@ -15,7 +15,7 @@ import { Link } from "react-router-dom";
 
 const Navibar = () => {
   return (
-    <Navbar className="bg-inherit border-0 max-w-full h-14 mx-auto rounded-none">
+    <Navbar className="bg-inherit text-blue-300 border-0 max-w-full h-14 mx-auto rounded-none">
       <div className="container max-w-full flex justify-between items-center ">
         <Link
           className="mx-4 flex items-center font-bold hover:text-amber-400"

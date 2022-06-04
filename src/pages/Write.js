@@ -230,10 +230,9 @@ const Write = () => {
 
   return (
     <>
-      <div className="">
+      <div className=""></div>
+      <main class="etc-bgX">
         <Navibar />
-      </div>
-      <main>
         <div className="max-w-screen-xlt pb-20 px-4 lg:px-40">
           <div className="max-w-screen-xlt flex-initial flex-col justify-center items-center py-20 pb-10">
             <div>
@@ -247,9 +246,9 @@ const Write = () => {
                 </Tooltip>
               )}
             </div>
-            <div className="max-w-screen-md mx-auto py-8">
+            <div className="max-w-screen-md mx-auto py-8 text-wh">
               <div className="text-center py-4">
-                <Typography variant="h2" color="amber">
+                <Typography variant="h2" color="light-blue">
                   동화 글쓰기
                 </Typography>
               </div>
@@ -259,7 +258,6 @@ const Write = () => {
                 ref={submitRef}
                 value={result}
                 onChange={onChangeTA}
-                placeholder="Result"
                 variant="outlined"
                 color="teal"
                 className="autoTextarea"

@@ -37,6 +37,13 @@
   background: url("../asset/images/headline-bg.jpg") center no-repeat;
 }
 
+.etc-bg {
+  width: 100%;
+  height: 100vh;
+  background-position: center;
+  background: url("../asset/images/etc-bg.jpg") center no-repeat;
+}
+
 .headText {
   font-size: 7rem;
   font-family: var(--secondary-font);
