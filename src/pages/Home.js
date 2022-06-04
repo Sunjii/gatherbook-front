@@ -15,7 +15,7 @@ const Home = () => {
         <section className="title-bg">
           <div className="relativea xpt-16 pb-32 flex content-center items-center justify-center">
             <div className="container max-w-8xl relative amx-auto">
-              <div className="items-center flex flex-wrap pt-12 px-12">
+              <div className="items-center flex flex-wrap pt-12 px-12 justify-center">
                 <div>
                   <img
                     className="max-h-fit max-w-sm lg:max-w-xs transition-all"
