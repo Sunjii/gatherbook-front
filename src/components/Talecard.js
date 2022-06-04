@@ -8,12 +8,17 @@ import {
 
 const TaleCard = (props) => {
   console.log(props);
+  console.log(props.imgbs64);
 
+  const onTaleCardClick = (e) => {
+    console.log(e);
+  };
+  // src={props.imgurl}
   return (
-    <Card className="w-96 mt-6">
-      <CardHeader color="blue" className="relative h-56">
+    <Card color="light-green" className="w-96 mt-6" onClick={onTaleCardClick}>
+      <CardHeader color="red" className="relative h-56">
         <img
-          src={props.imgurl}
+          src={`data:image/png;base64,${props.imgbs64}`}
           alt="img-blur-shadow"
           className="w-full h-full"
         />
