@@ -3,6 +3,7 @@ import React from "react";
 import DefaultFooter from "../components/Footer";
 import Navibar from "../components/Navibar";
 import TaleCard from "../components/Talecard";
+import { examples } from "../constants";
 
 const Home = () => {
   return (
@@ -36,8 +37,17 @@ const Home = () => {
                 </div>
               </div>
             </div>
-            <div className="py-20 px-20 flex flex-row items-center justify-center">
-              <TaleCard />
+            <div className="py-20 px-20 flex lg:flex-row items-center justify-center transition-all gap-8 flex-col">
+              {examples.map((exam) => (
+                <TaleCard
+                  id={exam.id}
+                  title={exam.title}
+                  author={exam.author}
+                  text={exam.text}
+                  imgbs64={exam.imgbs64}
+                  className="max-h-fit"
+                />
+              ))}
             </div>
           </div>
         </div>
