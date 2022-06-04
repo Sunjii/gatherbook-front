@@ -6,7 +6,14 @@ import axios from "axios";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 import Navibar from "../components/Navibar";
-import { Alert, Checkbox, Input, Textarea } from "@material-tailwind/react";
+import {
+  Alert,
+  Checkbox,
+  Input,
+  Textarea,
+  Tooltip,
+  Typography,
+} from "@material-tailwind/react";
 import { SERVER_ADDRESS } from "../constants";
 
 const Write = () => {
@@ -14,6 +21,7 @@ const Write = () => {
 
   const [text, setText] = useState("");
   const [result, setResult] = useState("");
+  const [isPredLoading, setIsPredLoading] = useState(true);
   const submitRef = useRef();
 
   const [useAPI, setUseAPI] = useState(false);
@@ -23,6 +31,8 @@ const Write = () => {
   const [maxLen, setMaxLen] = useState(50);
   const [temperature, setTemperature] = useState(0.85);
   const [repetPenalty, setRepetPenalty] = useState(1.5);
+
+  const [proposalList, setProposalList] = useState([]);
 
   const [imgFile, setImgFile] = useState(null);
   const [imgFileData, setImgFileData] = useState(null);
@@ -36,6 +46,12 @@ const Write = () => {
   const onChangeTA = (e) => {
     setResult(e.target.value);
   };
+
+  // loading
+  useEffect(() => {
+    console.log("로딩");
+    autoResizeTA();
+  }, [isPredLoading, result, proposalList]);
 
   // Modal
   const [modalOpen, setModalOpen] = useState(false);
@@ -55,9 +71,27 @@ const Write = () => {
     setUseAPI(!useAPI);
   };
 
+  // 로딩 핸들러
+  const loadingHandler = (e) => {
+    //setIsPredLoading(!isPredLoading);
+    setIsPredLoading(e);
+  };
+
+  // text area 리사이즈
+  const autoResizeTA = () => {
+    let textarea = document.querySelector(".autoTextarea");
+    if (textarea) {
+      console.log("resize");
+      textarea.style.height = "auto";
+      let height = textarea.scrollHeight;
+      textarea.style.height = `${height + 8}px`;
+    }
+  };
+
   // input 입력 - 서버로 string 전송 후 predict string을 받아옴
   const onKeyPress = async (e) => {
     if (e.key === "Enter") {
+      loadingHandler(false);
       if (e.target.value === "") {
         // 빈 입력 방지
         alert("빈 입력은 허용되지 않습니다!");
@@ -74,6 +108,7 @@ const Write = () => {
       fd.append("repetition", repetPenalty);
       fd.append("grammar_check", useAPI);
       // POST request //
+      const s_t = new Date();
       await axios
         .post(`${SERVER_ADDRESS}/predict`, fd, {
           headers: {
@@ -83,21 +118,34 @@ const Write = () => {
         .then((res) => {
           if (res.data) {
             // Result Text Area에 들어감
-            const going = " " + res.data.generate_text;
-            setResult(result.concat(going + " "));
+            const proposalForm = [res.data[0], res.data[1], res.data[2]];
+            setProposalList(proposalForm);
+            //const going = " " + res.data.generate_text;
+            //setResult(result.concat(going + " "));
+            loadingHandler(true);
+            //autoResizeTA();
           }
         })
         .catch((err) => {
           alert(err);
         });
+      const e_t = new Date();
+      console.log(e_t - s_t);
     }
+  };
+
+  const onProposalClick = (e) => {
+    // TextArea에 들어가게 됩니다.
+    const adding = " " + e.target.innerText;
+    setResult(result.concat(adding + " "));
+    // 리스트 초기화!
+    setProposalList([]);
   };
 
   // image 업로드 -> Base64 encoding -> 브라우저에 띄움
   const onImageUpload = (e) => {
     if (e.target.files[0]) {
       setImgFile(URL.createObjectURL(e.target.files[0]));
-      console.log(e.target.files[0]);
       setImgFileData(e.target.files[0]); //imgFile
       setImgBase64([]);
       // base64 encode
@@ -112,7 +160,7 @@ const Write = () => {
             if (base64) {
               var base64Sub = base64.toString();
               // base64 update
-              setImgBase64((imgBase64) => [...imgBase64, base64Sub]);
+              // setImgBase64((imgBase64) => [...imgBase64, base64Sub]);
             }
           };
         }
@@ -194,15 +242,11 @@ const Write = () => {
       <main>
         <div className="max-w-screen-xlt pb-20 px-40">
           <div className="max-w-screen-xlt flex-initial flex-col justify-center items-center py-20 pb-10">
-            <div
-              className="rounded-xl h-8 max-w-xs mx-auto bg-green-400 flex items-center justify-center hover:bg-red-400"
-              onClick={onPingPong}
-            >
-              Ping!
-            </div>
-            <div className="max-w-screen-md mx-auto py-20">
-              <div className="text-center">
-                <h1 color="amber">동화 글쓰기</h1>
+            <div className="max-w-screen-md mx-auto py-8">
+              <div className="text-center py-4">
+                <Typography variant="h2" color="amber">
+                  동화 글쓰기
+                </Typography>
               </div>
               <p className="text-right">{result.length} / 1024</p>
               <Textarea
@@ -213,6 +257,7 @@ const Write = () => {
                 placeholder="Result"
                 variant="outlined"
                 color="teal"
+                className="autoTextarea"
               />
             </div>
             <div className="max-w-screen-md mx-auto pb-6">
@@ -231,11 +276,36 @@ const Write = () => {
                 checked={useAPI}
                 onChange={(e) => checkHandler(e)}
               />
+              <div className="flex flex-col justify-center gap-4 py-4">
+                {proposalList
+                  ? proposalList.map((proposal) => (
+                      <div>
+                        <Alert
+                          className="hover:bg-amber-500"
+                          onClick={onProposalClick}
+                        >
+                          {proposal}
+                        </Alert>
+                      </div>
+                    ))
+                  : ""}
+              </div>
+              <div className="flex justify-center">
+                {isPredLoading ? (
+                  <p className="bg-green-700 text-white w-max rounded-lg">
+                    🤖대기중🤖
+                  </p>
+                ) : (
+                  <p className="bg-purple-600 text-white w-max rounded-lg">
+                    🤖두뇌 풀가동!🤖
+                  </p>
+                )}
+              </div>
             </div>
             <div>
-              <button onClick={openModal}>도움말</button>
-
-              <p>문장 길이 {maxLen}</p>
+              <Tooltip content="AI가 지어낼 글의 길이입니다.">
+                <p>문장 길이 {maxLen}</p>
+              </Tooltip>
               <Slider
                 min={30}
                 max={128}
@@ -244,7 +314,9 @@ const Write = () => {
                   setMaxLen(e);
                 }}
               />
-              <p>Temperature {temperature}</p>
+              <Tooltip content="높을수록 AI가 자유롭게 글을 써내려갑니다.">
+                <p>Temperature {temperature}</p>
+              </Tooltip>
               <Slider
                 min={1}
                 max={100}
@@ -253,7 +325,9 @@ const Write = () => {
                   setTemperature(e / 100);
                 }}
               />
-              <p>Repetition Penalty {repetPenalty}</p>
+              <Tooltip content="높을수록 단어의 반복을 방지합니다.">
+                <p>Repetition Penalty {repetPenalty}</p>
+              </Tooltip>
               <Slider
                 min={10}
                 max={50}
