@@ -27,7 +27,7 @@ const Navibar = () => {
           <FontAwesomeIcon icon={faBookBookmark} size="2x" />
           ──Gather Book
         </Link>
-        <div className="flex items-center gap-6">
+        <div className="flex items-center lg:gap-6 gap-0">
           <Link
             className="mx-4 flex items-center font-bold hover:text-amber-400 invisible lg:visible"
             to="/about"
