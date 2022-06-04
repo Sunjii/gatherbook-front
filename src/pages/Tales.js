@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { SpinnerCircular } from "spinners-react";
+import DefaultFooter from "../components/Footer";
 import Navibar from "../components/Navibar";
 import TaleCard from "../components/Talecard";
 import { SERVER_ADDRESS } from "../constants";
@@ -150,6 +151,7 @@ const Tales = () => {
           </div>
         </main>
       )}
+      <DefaultFooter />
     </>
   );
 };

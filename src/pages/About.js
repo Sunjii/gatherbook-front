@@ -1,6 +1,7 @@
 import { Environment } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import React, { Suspense } from "react";
+import DefaultFooter from "../components/Footer";
 import Navibar from "../components/Navibar";
 
 const About = () => {
@@ -19,6 +20,7 @@ const About = () => {
           </div>
         </div>
       </main>
+      <DefaultFooter />
     </>
   );
 };

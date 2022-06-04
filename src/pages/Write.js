@@ -16,6 +16,7 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import { SERVER_ADDRESS } from "../constants";
+import DefaultFooter from "../components/Footer";
 
 const Write = () => {
   const navigate = useNavigate();
@@ -306,7 +307,7 @@ const Write = () => {
                 )}
               </div>
             </div>
-            <div>
+            <div className="max-w-screen-md mx-auto">
               <Tooltip content="AI가 지어낼 글의 길이입니다.">
                 <p>문장 길이 {maxLen}</p>
               </Tooltip>
@@ -364,7 +365,7 @@ const Write = () => {
                     onChange={onImageUpload}
                     style={{ display: "none" }}
                   />
-                  <div className="">
+                  <div className="flex gap-4">
                     <button
                       className="py-2 px-4 rounded-lg shadow-md text-white bg-blue-500 hover:bg-blue-800"
                       onClick={onImageUploadBtnClick}
@@ -385,6 +386,7 @@ const Write = () => {
         </div>
         <div></div>
       </main>
+      <DefaultFooter />
     </>
   );
 };

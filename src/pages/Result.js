@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Navibar from "../components/Navibar";
 import { Button, Typography } from "@material-tailwind/react";
 import { SERVER_ADDRESS } from "../constants";
+import DefaultFooter from "../components/Footer";
 
 const Result = () => {
   const location = useLocation();
@@ -99,6 +100,7 @@ const Result = () => {
           </div>
         </div>
       </main>
+      <DefaultFooter />
     </>
   );
 };
