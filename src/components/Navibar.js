@@ -1,3 +1,7 @@
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import { faBarChart } from "@fortawesome/free-regular-svg-icons";
+import { faBookBookmark } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   Button,
   Menu,
@@ -5,7 +9,6 @@ import {
   MenuItem,
   MenuList,
   Navbar,
-  Typography,
 } from "@material-tailwind/react";
 import React from "react";
 import { Link } from "react-router-dom";
@@ -21,7 +24,8 @@ const Navibar = () => {
           className="mx-4 flex items-center font-bold hover:text-amber-400"
           to="/"
         >
-          Gather Book
+          <FontAwesomeIcon icon={faBookBookmark} size="2x" />
+          ──Gather Book
         </Link>
         <div className="flex items-center gap-6">
           <Link
@@ -46,11 +50,13 @@ const Navibar = () => {
             className="mx-4 flex items-center font-bold hover:text-amber-400 invisible lg:visible"
             href="https://github.com/boostcampaitech3/final-project-level3-nlp-06"
           >
-            Github
+            <FontAwesomeIcon icon={faGithub} size="2x" />
           </a>
           <Menu className="visible lg:invisible">
             <MenuHandler>
-              <Button className="visible lg:invisible">OPEN</Button>
+              <Button className="visible lg:invisible">
+                <FontAwesomeIcon icon={faBarChart} size="2x" />
+              </Button>
             </MenuHandler>
             <MenuList>
               <MenuItem>
