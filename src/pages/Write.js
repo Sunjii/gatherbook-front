@@ -366,12 +366,14 @@ const Write = () => {
                     style={{ display: "none" }}
                   />
                   <div className="flex gap-4">
-                    <button
-                      className="py-2 px-4 rounded-lg shadow-md text-white bg-blue-500 hover:bg-blue-800"
-                      onClick={onImageUploadBtnClick}
-                    >
-                      사진 업로드
-                    </button>
+                    <Tooltip content="이미지를 올리면 동화풍으로 바꿔줍니다.">
+                      <button
+                        className="py-2 px-4 rounded-lg shadow-md text-white bg-blue-500 hover:bg-blue-800"
+                        onClick={onImageUploadBtnClick}
+                      >
+                        사진 업로드
+                      </button>
+                    </Tooltip>
                     <button
                       className="py-2 px-4 rounded-lg shadow-md text-white bg-blue-500 hover:bg-blue-800"
                       type="submit"
