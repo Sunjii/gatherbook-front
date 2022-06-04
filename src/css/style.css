@@ -148,3 +148,31 @@
 .between {
   min-height: 65vh;
 }
+
+.bottom-btn {
+  font-size: 1.5rem;
+  color: var(--secondary-font-color);
+  position: relative;
+  transition: color 0.5s;
+}
+
+.bottom-btn::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 100%;
+  height: 2px;
+  background-color: var(--secondary-font-color);
+  transition: background-color 0.5s;
+}
+
+.bottom-btn:hover,
+.bottom-btn:focus {
+  color: #fce5ca;
+}
+
+.bottom-btn:hover::before,
+.bottom-btn:focus::before {
+  background-color: #fce5ca;
+}
