@@ -5103,6 +5103,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   .md\:justify-between {
     justify-content: space-between;
   }
+
+  .md\:px-12 {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
 }
 
 @media (min-width: 960px) {
