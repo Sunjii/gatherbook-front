@@ -40,8 +40,8 @@
 .headText {
   font-size: 7rem;
   font-family: var(--secondary-font);
-  /*color: var(--secondary-font-color);*/
-  color: lightyellow;
+  color: var(--secondary-font-color);
+  /*color: lightyellow;*/
   font-weight: 100;
   line-height: 0.4;
   letter-spacing: 2px;
@@ -70,4 +70,74 @@
   margin-bottom: 1.2rem;
   letter-spacing: 3px;
   margin-left: -3px;
+}
+
+/* Discover */
+
+.global-headline {
+  text-align: center;
+  margin-top: 3.9rem;
+  letter-spacing: -1px;
+}
+
+.discover-out-story {
+  margin-top: 6.9rem;
+}
+
+.headline-dark {
+  color: var(--main-font-color-dark);
+  letter-spacing: 0.7rem;
+  margin-left: -0.7rem;
+}
+
+.project-info {
+  text-align: center;
+}
+
+.project-description {
+  margin-bottom: 3rem;
+}
+
+.project-description p {
+  line-height: 1.6;
+  margin-bottom: 2.4rem;
+}
+
+.body-btn {
+  font-size: 1.5rem;
+  color: var(--secondary-font-color);
+  position: relative;
+  transition: color 0.5s;
+}
+
+.body-btn::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 100%;
+  height: 2px;
+  background-color: var(--secondary-font-color);
+  transition: background-color 0.5s;
+}
+
+.body-btn:hover,
+.body-btn:focus {
+  color: var(--main-font-color-dark);
+}
+
+.body-btn:hover::before,
+.body-btn:focus::before {
+  background-color: var(--main-font-color-dark);
+}
+
+/* story sample */
+
+.story-examples {
+  background: url("../asset/images/bottom-bg.jpg") center no-repeat;
+  background-size: cover;
+}
+
+.between {
+  min-height: 65vh;
 }
