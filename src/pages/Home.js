@@ -1,3 +1,5 @@
+import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Typography } from "@material-tailwind/react";
 import React from "react";
 import DefaultFooter from "../components/Footer";
@@ -8,13 +10,12 @@ import { examples } from "../constants";
 const Home = () => {
   return (
     <>
-      <div className="">
-        <Navibar />
-      </div>
       <main>
-        <section className="title-bg">
-          <div className="relativea xpt-16 pb-32 flex content-center items-center justify-center">
+        <div className=""></div>
+        <section class="title-bg" id="title">
+          <div className="relative pt-16 pb-32 flex content-center items-center justify-center">
             <div className="container max-w-8xl relative amx-auto">
+              <Navibar />
               <div className="items-center flex flex-wrap pt-12 px-12 justify-center">
                 <div>
                   <img
@@ -34,7 +35,7 @@ const Home = () => {
         </section>
         {/* Headline end */}
         {/* Storyline start */}
-        <section className="discover-out-story">
+        <section className="discover-out-story flex justify-center">
           <div className="container">
             <div className="project-info">
               <div className="project-description padding-right animate-left">
@@ -42,13 +43,39 @@ const Home = () => {
                   <h1 className="headText">Discover</h1>
                   <h1 className="headline headline-dark">Our Project</h1>
                 </div>
+                <p>이 프로젝트는</p>
+                <a href="#" class="body-btn">
+                  About us
+                </a>
+              </div>
+              <div className="flex justify-center project-info-img animate-right pb-8">
+                <img alt="" src="./image3.png" />
               </div>
             </div>
           </div>
         </section>
         {/* Storyline end */}
         {/* Card section start */}
-        <section>
+        <section class="story-examples between">
+          <div className="container mx-auto py-4 lg:py-10">
+            <div className="project-info">
+              <div className="project-description padding-right animate-left">
+                <div className="global-headline">
+                  <div className="animate-top">
+                    <h1 className="headText">Stories</h1>
+                  </div>
+                  <div className="animate-bottom">
+                    <h1 className="headline">Story Sample</h1>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="flex justify-center pb-10">
+            <a href="#title">
+              <FontAwesomeIcon color="white" icon={faArrowUp} size="2x" />
+            </a>
+          </div>
           <div className="py-20 px-20 flex xl:flex-row items-center justify-center transition-all gap-8 flex-col">
             {examples.map((exam) => (
               <TaleCard
