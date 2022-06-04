@@ -10,3 +10,63 @@
 }
 
 @tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css?family=Cabin|Herr+Von+Muellerhoff|Source+Sans+Pro:400,900&display=swap");
+/*Global styles*/
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --main-font: "Source Sans Pro", sans-serif;
+  --secondary-font: "Herr Von Muellerhoff", cursive;
+  --body-font: "Cabin", sans-serif;
+  --main-font-color-dark: #252525;
+  --secondary-font-color: #c59d5f;
+  --body-font-color: #515151;
+}
+
+.title-bg {
+  width: 100%;
+  height: 100vh;
+  background-position: center;
+  background: url("../asset/images/headline-bg.jpg") center no-repeat;
+}
+
+.headText {
+  font-size: 7rem;
+  font-family: var(--secondary-font);
+  color: var(--secondary-font-color);
+  font-weight: 100;
+  line-height: 0.4;
+  letter-spacing: 2px;
+}
+
+.first-letter {
+  text-transform: uppercase;
+  font-size: 10.3rem;
+}
+
+.headline {
+  color: rgb(90, 142, 213);
+  font-size: 3.5rem;
+  font-family: var(--main-font);
+  text-transform: uppercase;
+  font-weight: 900;
+  letter-spacing: 0.5rem;
+  margin-right: -0.5rem;
+}
+
+.headline-description {
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: 100;
+  text-transform: uppercase;
+  margin-bottom: 1.2rem;
+  letter-spacing: 3px;
+  margin-left: -3px;
+}
