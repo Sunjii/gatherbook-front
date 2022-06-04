@@ -37,7 +37,7 @@ const Home = () => {
                 </div>
               </div>
             </div>
-            <div className="py-20 px-20 flex lg:flex-row items-center justify-center transition-all gap-8 flex-col">
+            <div className="py-20 px-20 flex xl:flex-row items-center justify-center transition-all gap-8 flex-col">
               {examples.map((exam) => (
                 <TaleCard
                   id={exam.id}

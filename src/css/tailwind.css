@@ -5320,6 +5320,10 @@ Ensure the default browser behavior of the `hidden` attribute.
     width: 33.333333%;
   }
 
+  .md\:flex-row {
+    flex-direction: row;
+  }
+
   .md\:justify-between {
     justify-content: space-between;
   }
@@ -5367,5 +5371,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 
   .lg\:text-left {
     text-align: left;
+  }
+}
+
+@media (min-width: 1140px) {
+  .xl\:flex-row {
+    flex-direction: row;
   }
 }
