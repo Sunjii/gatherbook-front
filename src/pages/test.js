@@ -47,7 +47,7 @@ const Test = () => {
 
   return (
     <>
-      <div className="absolute w-full z-20"></div>
+      <div className=""></div>
       <main>
         <Button onClick={onClick}>button</Button>
         <Button onClick={onClick2}>button2</Button>

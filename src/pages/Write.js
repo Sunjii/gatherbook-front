@@ -229,7 +229,7 @@ const Write = () => {
 
   return (
     <>
-      <div className="absolute w-full z-20">
+      <div className="">
         <Navibar />
       </div>
       <main>
