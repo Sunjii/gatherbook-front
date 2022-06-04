@@ -15,17 +15,14 @@ import { Link } from "react-router-dom";
 
 const Navibar = () => {
   return (
-    <Navbar
-      color="blue"
-      className="max-w-full h-14 mx-auto lg:bg-blue-500 rounded-none"
-    >
+    <Navbar className="bg-inherit border-0 max-w-full h-14 mx-auto rounded-none">
       <div className="container max-w-full flex justify-between items-center ">
         <Link
           className="mx-4 flex items-center font-bold hover:text-amber-400"
           to="/"
         >
-          <FontAwesomeIcon icon={faBookBookmark} size="2x" />
-          ──Gather Book
+          <FontAwesomeIcon icon={faBookBookmark} size="1x" />
+          {"　GatherBook"}
         </Link>
         <div className="flex items-center lg:gap-6 gap-0">
           <Link
@@ -54,7 +51,7 @@ const Navibar = () => {
           </a>
           <Menu className="visible lg:invisible">
             <MenuHandler>
-              <Button className="visible lg:invisible">
+              <Button color="amber" className="visible lg:invisible">
                 <FontAwesomeIcon icon={faBarChart} size="2x" />
               </Button>
             </MenuHandler>
