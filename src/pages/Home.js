@@ -72,8 +72,8 @@ const Home = () => {
             </div>
           </div>
           <div className="flex justify-center pb-10">
-            <a href="#title">
-              <FontAwesomeIcon color="white" icon={faArrowUp} size="2x" />
+            <a href="#title" class="bottom-btn">
+              <FontAwesomeIcon icon={faArrowUp} size="2x" />
             </a>
           </div>
           <div className="py-20 px-20 flex xl:flex-row items-center justify-center transition-all gap-8 flex-col">
