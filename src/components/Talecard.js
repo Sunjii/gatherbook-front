@@ -13,17 +13,18 @@ const TaleCard = (props) => {
   const onTaleCardClick = (e) => {
     console.log(e);
   };
+
   // src={props.imgurl}
   return (
-    <Card color="light-green" className="w-96 mt-6" onClick={onTaleCardClick}>
-      <CardHeader color="red" className="relative h-56">
+    <Card color="light-blue" className="w-96 mt-6" onClick={onTaleCardClick}>
+      <CardHeader color="blue-grey" className="relative h-56">
         <img
           src={`data:image/png;base64,${props.imgbs64}`}
           alt="img-blur-shadow"
           className="w-full h-full"
         />
       </CardHeader>
-      <CardBody className="text-center">
+      <CardBody className="text-center max-h-80">
         <Typography variant="h5" className="mb-2">
           {props.title}
         </Typography>
