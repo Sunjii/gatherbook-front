@@ -5,13 +5,21 @@ import {
   CardFooter,
   Typography,
 } from "@material-tailwind/react";
+import { useNavigate } from "react-router-dom";
 
 const TaleCard = (props) => {
+  const navigate = useNavigate();
   console.log(props);
   console.log(props.imgbs64);
 
   const onTaleCardClick = (e) => {
-    console.log(e);
+    console.log(props.id);
+    navigate(`/tales/${props.id}`, {
+      state: {
+        props,
+      },
+    });
+    // TODO: id에 해당하는 상세 페이지로 이동시키기
   };
 
   // src={props.imgurl}
