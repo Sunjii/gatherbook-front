@@ -330,7 +330,7 @@ const Write = () => {
               </div>
             </div>
             <div className="max-w-screen-md mx-auto">
-              <Tooltip content="AI가 지어낼 글의 길이입니다.">
+              <Tooltip content="AI가 지어낼 문장의 갯수입니다.">
                 <p>문장 길이 {maxLen}</p>
               </Tooltip>
               <Slider
