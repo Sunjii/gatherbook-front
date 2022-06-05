@@ -62,7 +62,7 @@ const Home = () => {
               <div className="project-description padding-right animate-left">
                 <div className="global-headline">
                   <div className="animate-top">
-                    <h1 className="headText">Stories</h1>
+                    <h1 className="headText">Check</h1>
                   </div>
                   <div className="animate-bottom">
                     <h1 className="headline">Story Sample</h1>
