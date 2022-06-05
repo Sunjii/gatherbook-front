@@ -1437,6 +1437,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   border-color: rgb(255 202 40 / var(--tw-border-opacity));
 }
 
+.border-white {
+  --tw-border-opacity: 1;
+  border-color: rgb(255 255 255 / var(--tw-border-opacity));
+}
+
 .border-b-blue-grey-100 {
   --tw-border-opacity: 1;
   border-bottom-color: rgb(207 216 220 / var(--tw-border-opacity));
@@ -1687,6 +1692,31 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .bg-inherit {
   background-color: inherit;
+}
+
+.bg-grey-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(189 189 189 / var(--tw-bg-opacity));
+}
+
+.bg-grey-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(117 117 117 / var(--tw-bg-opacity));
+}
+
+.bg-blue-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(66 165 245 / var(--tw-bg-opacity));
+}
+
+.bg-light-blue-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(41 182 246 / var(--tw-bg-opacity));
+}
+
+.bg-light-blue-700 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(2 136 209 / var(--tw-bg-opacity));
 }
 
 .bg-opacity-60 {
@@ -3811,6 +3841,13 @@ Ensure the default browser behavior of the `hidden` attribute.
 .placeholder-shown\:border-t-green-500:placeholder-shown {
   --tw-border-opacity: 1;
   border-top-color: rgb(76 175 80 / var(--tw-border-opacity));
+}
+
+.hover\:scale-90:hover {
+  --tw-scale-x: .9;
+  --tw-scale-y: .9;
+  -webkit-transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+          transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
 .hover\:bg-white:hover {
