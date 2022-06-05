@@ -35,7 +35,7 @@ const Write = () => {
   const [serverPing, setServerPing] = useState(false);
 
   const [text, setText] = useState("");
-  const [result, setResult] = useState("");
+  const [result, setResult] = useState(" ");
   //const [title, setTitle] = useState("제목 없음");
   //const [author, setAuthor] = useState("익명");
   const [isPredLoading, setIsPredLoading] = useState(true);
@@ -109,12 +109,16 @@ const Write = () => {
 
       // Form data
       const fd = new FormData();
+      console.log(`result: ${result}`);
+      fd.append("result", result);
       fd.append("data", target);
       fd.append("sentence_count", maxLen);
       fd.append("temperature", temperature);
       fd.append("repetition", repetPenalty);
       fd.append("grammar_check", useAPI);
-      fd.append("result", result);
+      console.log(fd);
+      console.log(fd.result, target);
+      console.log(fd.data, result);
       // POST request //
       const s_t = new Date();
       await axios
@@ -437,7 +441,9 @@ const Write = () => {
           </Modal>
         </div>
       </main>
-      <DefaultFooter />
+      <div>
+        <DefaultFooter />
+      </div>
     </>
   );
 };
