@@ -50,6 +50,7 @@ const Result = () => {
     // copy -> .../tales/ind
     let link = window.location.href.split("/result")[0];
     link = link + `/${ind}`;
+    console.log(link);
     navigator.clipboard.writeText(link);
   };
 
@@ -105,10 +106,8 @@ const Result = () => {
           </div>
           <div>
             <Popover>
-              <PopoverHandler>
-                <Button size="lg" onClick={onCopyClick}>
-                  링크복사
-                </Button>
+              <PopoverHandler onClick={onCopyClick}>
+                <Button size="lg">링크복사</Button>
               </PopoverHandler>
               <PopoverContent>링크 복사 완료!</PopoverContent>
             </Popover>
