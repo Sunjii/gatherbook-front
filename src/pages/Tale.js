@@ -50,12 +50,11 @@ const Tale = (props) => {
 
   return (
     <>
-      <div className="">
+      <div className=""></div>
+      <main className="write-bg">
         <Navibar />
-      </div>
-      <main>
-        <div className="relative pt-16 pb-32 flex content-center items-center justify-center h-screen">
-          <div className="w-full lg:w-6/12 px-4 text-center">
+        <div className="relative pt-16 pb-32 flex content-center items-center justify-center xh-screen">
+          <div className="w-fullx lg:w-6/12 px-6 py-12 text-center bg-white bg-opacity-70 rounded-3xl">
             <div>
               {tale.title ? (
                 <Typography
@@ -101,6 +100,7 @@ const Tale = (props) => {
           </div>
         </div>
       </main>
+
       <DefaultFooter />
     </>
   );

@@ -1,3 +1,4 @@
+import { Chip, Typography } from "@material-tailwind/react";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { SpinnerCircular } from "spinners-react";
@@ -131,49 +132,74 @@ const Tales = (props) => {
 
   return (
     <>
-      <div className="">
+      <div className=""></div>
+      <div className="write-bg">
         <Navibar />
-      </div>
-      {loading ? (
-        <main className="pb-12">
-          <div className="relative pt-16 pb-32 flex flex-col items-center justify-center">
-            <h1>구경 하기!</h1>
-            <button onClick={onTest}>Test Button</button>
-            {totalCount
-              ? `현재 총 ${totalCount}건의 글이 있습니다!`
-              : "아직 아무것도 없네요!"}
-            <h1>Page</h1>
-            <div className="flex flex-row gap-4">
-              {pageCount
-                ? [...Array(pageCount)].map((_, idx) => (
-                    <div className="cursor-pointer" onClick={onPageClick}>
-                      {idx}
-                    </div>
-                  ))
-                : "none"}
+        {loading ? (
+          <main className="pb-12">
+            <div className="">
+              <div className="relative pt-16 pb-32 flex flex-col items-center justify-center">
+                <Typography color="light-blue" variant="h1">
+                  구경 하기!
+                </Typography>
+                <button className="invisible" onClick={onTest}>
+                  Test Button
+                </button>
+                {totalCount
+                  ? `현재 총 ${totalCount}건의 글이 있습니다!`
+                  : "아직 아무것도 없네요!"}
+                <Chip value="PAGE" />
+                <div className="pt-4 flex flex-row gap-4 text-blue-400">
+                  {pageCount
+                    ? [...Array(pageCount)].map((_, idx) => (
+                        <div
+                          className="cursor-pointer hover:text-white hover:scale-150 duration-200"
+                          onClick={onPageClick}
+                        >
+                          {idx}
+                        </div>
+                      ))
+                    : "none"}
+                </div>
+              </div>
+              <div className="px-8 flex flex-row flex-wrap gap-10">
+                {tales
+                  ? tales.map((tale) => (
+                      <TaleCard
+                        id={tale.id}
+                        title={tale.title}
+                        author={tale.author}
+                        text={tale.text}
+                        imgbs64={tale.imgbs64 ? tale.imgbs64 : "no"}
+                      />
+                    ))
+                  : "NONE"}
+              </div>
+              <div className="py-8 flex flex-col items-center justify-center">
+                <Chip value="PAGE" />
+                <div className="pt-4 flex flex-row gap-4 text-blue-400">
+                  {pageCount
+                    ? [...Array(pageCount)].map((_, idx) => (
+                        <div
+                          className="cursor-pointer hover:text-white hover:scale-150 duration-200"
+                          onClick={onPageClick}
+                        >
+                          {idx}
+                        </div>
+                      ))
+                    : "none"}
+                </div>
+              </div>
             </div>
-          </div>
-          <div className="px-8 flex flex-row flex-wrap gap-10">
-            {tales
-              ? tales.map((tale) => (
-                  <TaleCard
-                    id={tale.id}
-                    title={tale.title}
-                    author={tale.author}
-                    text={tale.text}
-                    imgbs64={tale.imgbs64 ? tale.imgbs64 : "no"}
-                  />
-                ))
-              : "NONE"}
-          </div>
-        </main>
-      ) : (
-        <main>
-          <div className="relative h-screen pt-16 pb-32 flex items-center justify-center">
-            <SpinnerCircular size={150} enabled={true} />
-          </div>
-        </main>
-      )}
+          </main>
+        ) : (
+          <main>
+            <div className="relative h-screen pt-16 pb-32 flex items-center justify-center">
+              <SpinnerCircular size={150} enabled={true} />
+            </div>
+          </main>
+        )}
+      </div>
       <DefaultFooter />
     </>
   );
