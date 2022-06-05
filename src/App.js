@@ -6,6 +6,7 @@ import About from "./pages/About";
 import Write from "./pages/Write";
 import Test from "./pages/test";
 import Tales from "./pages/Tales";
+import Tale from "./pages/Tale";
 
 export const App = () => {
   return (
@@ -15,6 +16,8 @@ export const App = () => {
       <Route path="/write" element={<Write />} />
       <Route path="/result" element={<Result />} />
       <Route path="/tales" element={<Tales />} />
+      <Route path="/tales/:id" element={<Tale />} />
+      <Route path="/tale:id" element={<Tale />} />
       <Route path="/test" element={<Test />} />
 
       <Route path="/*" element={<h1>404 Error</h1>} />
