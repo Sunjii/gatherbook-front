@@ -9,8 +9,8 @@ import { useNavigate } from "react-router-dom";
 
 const TaleCard = (props) => {
   const navigate = useNavigate();
-  console.log(props);
-  console.log(props.imgbs64);
+  //console.log(props);
+  //console.log(props.imgbs64);
 
   const onTaleCardClick = (e) => {
     console.log(props.id);
