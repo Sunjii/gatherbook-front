@@ -75,7 +75,7 @@ const Result = () => {
               ) : (
                 "title not found"
               )}
-              <div className="flex flex-col gap-10">
+              <div className="flex flex-col justify-center items-center gap-10">
                 {author ? (
                   <Typography variant="h5">{author}</Typography>
                 ) : (
