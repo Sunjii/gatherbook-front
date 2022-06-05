@@ -6,7 +6,11 @@ import Navibar from "../components/Navibar";
 import TaleCard from "../components/Talecard";
 import { SERVER_ADDRESS } from "../constants";
 
-const Tales = () => {
+const Tales = (props) => {
+  //const currentPage = props.pageNum;
+  const [currentPage, setCurrentPage] = useState(0);
+  const talesNum = 6;
+
   const [pageCount, setPageCount] = useState(0);
   const [totalCount, setTotalCount] = useState(0);
   const [pageNum, setPageNum] = useState(0);
@@ -33,9 +37,9 @@ const Tales = () => {
         if (res) {
           // rest.data 에는 전체 개수가 옵니다.
           console.log(`res is ${res.data}`);
-          // 페이지 개수는 전체/6 입니다.
+          // 페이지 개수는 전체/talesNum 입니다.
           setTotalCount(res.data);
-          setPageCount(Math.floor(res.data / 6) + 1);
+          setPageCount(Math.floor(res.data / talesNum) + 1);
           setServerState(true);
         }
       })
@@ -50,12 +54,22 @@ const Tales = () => {
   const getTales = async (pageNum) => {
     // 먼저 6개의 쿼리를 가져옵니다.
     // 역순으로 가져와야겠지..?
-    const talesNum = totalCount;
-    // TODO: talesNum 수치를 수정해야함
-    console.log(`${talesNum} tale is exist`);
+    //const talesNum = totalCount;
 
-    for (let idx = 0; idx < talesNum; idx++) {
-      console.log(`idx: ${idx}`);
+    console.log(`get ${talesNum}개 tale `);
+    console.log(currentPage, " 번째 페이지 접근중");
+
+    // 이전 tales를 비워줍니다
+    setTales([]);
+
+    // 페이지 넘버에 맞는 tales를 가져옵니다.
+
+    // 0; idx <= talesNum
+    for (
+      let idx = currentPage * talesNum + 1;
+      idx <= currentPage * talesNum + talesNum;
+      idx++
+    ) {
       await axios
         .get(`${SERVER_ADDRESS}/tales/${idx}`, { timeout: 10000 })
         .then((res) => {
@@ -90,6 +104,7 @@ const Tales = () => {
   // page 클릭에 따라서 해당되는 쿼리를 돌립니다.
   const onPageClick = (e) => {
     console.log(e.target.innerText);
+    setCurrentPage(e.target.innerText);
   };
 
   useEffect(() => {
@@ -98,15 +113,20 @@ const Tales = () => {
     // 서버에서 count를 가져옵니다
     getTalesCount();
     // 서버에서 페이지에 해당하는 tale들을 가져옵니다.
-    getTales();
+    //getTales();
 
     // 페이지네이션
 
     // setTotalCount 비동기 처리
   }, [totalCount, serverState]);
 
+  useEffect(() => {
+    getTales();
+  }, [currentPage]);
+
   const onTest = (e) => {
     console.log(tales);
+    console.log(pageCount);
   };
 
   return (
@@ -115,7 +135,7 @@ const Tales = () => {
         <Navibar />
       </div>
       {loading ? (
-        <main>
+        <main className="pb-12">
           <div className="relative pt-16 pb-32 flex flex-col items-center justify-center">
             <h1>구경 하기!</h1>
             <button onClick={onTest}>Test Button</button>

@@ -17,6 +17,18 @@ import {
 } from "@material-tailwind/react";
 import { SERVER_ADDRESS } from "../constants";
 import DefaultFooter from "../components/Footer";
+import {
+  Button,
+  Modal,
+  Form,
+  FormControl,
+  FormGroup,
+  FormLabel,
+  ModalBody,
+  ModalFooter,
+  ModalHeader,
+  ModalTitle,
+} from "react-bootstrap";
 
 const Write = () => {
   const navigate = useNavigate();
@@ -24,12 +36,16 @@ const Write = () => {
 
   const [text, setText] = useState("");
   const [result, setResult] = useState("");
+  //const [title, setTitle] = useState("제목 없음");
+  //const [author, setAuthor] = useState("익명");
   const [isPredLoading, setIsPredLoading] = useState(true);
   const submitRef = useRef();
 
   const [useAPI, setUseAPI] = useState(false);
 
-  const [open, setOpen] = useState(false);
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const [maxLen, setMaxLen] = useState(2);
   const [temperature, setTemperature] = useState(0.85);
@@ -98,6 +114,7 @@ const Write = () => {
       fd.append("temperature", temperature);
       fd.append("repetition", repetPenalty);
       fd.append("grammar_check", useAPI);
+      fd.append("result", result);
       // POST request //
       const s_t = new Date();
       await axios
@@ -179,14 +196,20 @@ const Write = () => {
     if (imgFile) {
       // Object.values(imgBase64).forEach((file) => fd.append("file", file)); base64
       console.log("imgFile fd 탑재");
-      console.log(imgFileData);
+      //console.log(imgFileData);
       fd.append("file", imgFileData);
     } else {
-      fd.append("file", null);
+      //fd.append("file", null);
     }
     fd.append("text", result);
-    fd.append("author", "작가 미상");
-    fd.append("title", "제목이다");
+
+    // 작가 및 제목 입력창 생성
+    //handleShow();
+    let title = prompt("제목", "제목없음");
+    let author = prompt("작가", "익명");
+
+    fd.append("author", author);
+    fd.append("title", title);
 
     console.log(fd);
     await axios
@@ -280,6 +303,17 @@ const Write = () => {
                 checked={useAPI}
                 onChange={(e) => checkHandler(e)}
               />
+              <div className="flex justify-center">
+                {isPredLoading ? (
+                  <p className="bg-green-700 text-white w-max rounded-lg">
+                    🤖대기중🤖
+                  </p>
+                ) : (
+                  <p className="bg-purple-600 text-white w-max rounded-lg">
+                    🤖두뇌 풀가동!🤖
+                  </p>
+                )}
+              </div>
               <div className="flex flex-col justify-center gap-4 py-4">
                 {proposalList
                   ? proposalList.map((proposal) => (
@@ -293,17 +327,6 @@ const Write = () => {
                       </div>
                     ))
                   : ""}
-              </div>
-              <div className="flex justify-center">
-                {isPredLoading ? (
-                  <p className="bg-green-700 text-white w-max rounded-lg">
-                    🤖대기중🤖
-                  </p>
-                ) : (
-                  <p className="bg-purple-600 text-white w-max rounded-lg">
-                    🤖두뇌 풀가동!🤖
-                  </p>
-                )}
               </div>
             </div>
             <div className="max-w-screen-md mx-auto">
@@ -385,7 +408,34 @@ const Write = () => {
             </form>
           </div>
         </div>
-        <div></div>
+        <div>
+          <Button onClick={handleShow}>SHOW</Button>
+          <Modal show={show} onHide={handleClose}>
+            <ModalHeader closeButton>
+              <ModalTitle>Modal Head</ModalTitle>
+            </ModalHeader>
+            <ModalBody>
+              <Form>
+                <FormGroup className="mb-3" controlId="title_input">
+                  <FormLabel>Title</FormLabel>
+                  <FormControl placeholder="제목을 지어주세요!" autoFocus />
+                </FormGroup>
+                <FormGroup className="mb-3" controlId="author_input">
+                  <FormLabel>Author</FormLabel>
+                  <FormControl placeholder="당신의 이름은?" />
+                </FormGroup>
+              </Form>
+            </ModalBody>
+            <ModalFooter>
+              <Button variant="secondary" onClick={handleClose}>
+                닫기
+              </Button>
+              <Button variant="primary" onClick={handleClose}>
+                완성!
+              </Button>
+            </ModalFooter>
+          </Modal>
+        </div>
       </main>
       <DefaultFooter />
     </>
