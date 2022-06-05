@@ -2750,7 +2750,7 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .write-bg {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background-position: center;
   background: url("../asset/images/headline-bg.jpg") center no-repeat;
 }

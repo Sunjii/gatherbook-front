@@ -4,7 +4,7 @@ const DefaultFooter = () => {
   return (
     <>
       <footer>
-        <div className="relative bg-light-blue-800 pt-8 pb-6">
+        <div className="relativea bg-light-blue-800 pt-8 pb-6">
           <div className="container max-w-7xl mx-auto px-4">
             <div className="flex flex-wrap text-center lg:text-left pt-6">
               <div className="w-full lg:w-6/12 px-4"></div>
