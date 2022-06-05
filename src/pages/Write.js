@@ -255,11 +255,11 @@ const Write = () => {
   return (
     <>
       <div className=""></div>
-      <main className="etc-bgX">
+      <main className="write-bg">
         <Navibar />
         <div className="max-w-screen-xlt pb-20 px-4 lg:px-40">
-          <div className="max-w-screen-xlt flex-initial flex-col justify-center items-center py-20 pb-10">
-            <div>
+          <div className="bg-opacity-70 bg-white rounded-3xl max-w-screen-xlt flex-initial flex-col justify-center items-center my-20 pb-10">
+            <div className="py-4 px-4">
               {serverPing ? (
                 <Tooltip content="현재 AI 서버가 작동중입니다.">
                   <Chip color="cyan" value="서버 연결됨" />
