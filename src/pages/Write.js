@@ -217,13 +217,14 @@ const Write = () => {
     //e.preventDefault();
     const res = axios
       .get(`${SERVER_ADDRESS}/`)
+      //.get("http://naver.com")
       .then(function (res) {
-        //console.log(res);
+        console.log(res);
         //console.log(res.data);
         setServerPing(true);
       })
       .catch(function (error) {
-        //console.log(error);
+        console.log(error);
         setServerPing(false);
       });
   };
@@ -231,7 +232,7 @@ const Write = () => {
   return (
     <>
       <div className=""></div>
-      <main class="etc-bgX">
+      <main className="etc-bgX">
         <Navibar />
         <div className="max-w-screen-xlt pb-20 px-4 lg:px-40">
           <div className="max-w-screen-xlt flex-initial flex-col justify-center items-center py-20 pb-10">
