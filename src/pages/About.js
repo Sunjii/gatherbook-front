@@ -16,6 +16,7 @@ const About = () => {
             <h2>About Us</h2>
             <div>
               <p>우리는 자연어 한접시!</p>
+              <img src="./duck.jpg" alt="" />
             </div>
           </div>
         </div>
