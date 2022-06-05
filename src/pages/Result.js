@@ -38,11 +38,14 @@ const Result = () => {
   console.log(location.state);
   console.log(`${styledImage}`);
 
-  // share 버튼을 누르면 해당 정보를 백엔드로 보내 DB에 저장시킵니다.
-  const onShareClick = (e) => {
-    // 잠깐.. 이미 서버에서 저장을 시켜놨던가?
-    // 그럼 그냥 여기로 올 수 있는 링크를 생성시키면 될까?
-    // idx로 하자 그럼
+  // 버튼을 누르면 link를 복사합니다.
+  const onCopyClick = async (e) => {
+    // 링크를 클립보드로 복사합니다.
+    // copy -> .../tales/ind
+    let link = window.location.href.split("/result")[0];
+    link = link + `/${ind}`;
+    navigator.clipboard.writeText(link);
+    alert("링크 복사 완료!");
   };
 
   return (
@@ -96,8 +99,8 @@ const Result = () => {
             </div>
           </div>
           <div>
-            <Button size="lg" onClick={onShareClick}>
-              공유하기
+            <Button size="lg" onClick={onCopyClick}>
+              링크복사
             </Button>
           </div>
         </div>
