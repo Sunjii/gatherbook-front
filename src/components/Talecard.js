@@ -26,7 +26,7 @@ const TaleCard = (props) => {
   return (
     <Card
       color="light-blue"
-      className="w-96 mt-6 hover:scale-90 transition duration-300"
+      className="w-96 mt-6 hover:scale-90 transition duration-300 opacity-90"
       onClick={onTaleCardClick}
     >
       <CardHeader color="blue-grey" className="relative h-56">

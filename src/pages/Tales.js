@@ -138,7 +138,7 @@ const Tales = (props) => {
         {loading ? (
           <main className="pb-12">
             <div className="">
-              <div className="relative pt-16 pb-32 flex flex-col items-center justify-center">
+              <div className="relative pt-16x pb-32x flex flex-col items-center justify-center">
                 <Typography color="light-blue" variant="h1">
                   구경 하기!
                 </Typography>
