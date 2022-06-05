@@ -29,14 +29,14 @@ const Result = () => {
     setTitle(location.state.res.title);
     setAuthor(location.state.res.author);
     setResultText(location.state.result_text);
-    setStyledImage(location.state.res.chg_file_url);
+    setStyledImage(location.state.res.chg_file_bs64); // chg_img_url
     setInd(location.state.res.ind);
     //setStyledImage(URL.createObjectURL(location.state.res.styledImage));
   }, []);
 
   console.log(ind);
   console.log(location.state);
-  console.log(`${SERVER_ADDRESS}/${styledImage}`);
+  console.log(`${styledImage}`);
 
   // share 버튼을 누르면 해당 정보를 백엔드로 보내 DB에 저장시킵니다.
   const onShareClick = (e) => {
@@ -85,7 +85,9 @@ const Result = () => {
                 {styledImage ? (
                   <img
                     alt="img here"
-                    src={`${SERVER_ADDRESS}/${styledImage}`}
+                    src={`data:imgae/png;base64,${styledImage}`}
+                    height="360"
+                    width="360"
                   />
                 ) : (
                   "no image"

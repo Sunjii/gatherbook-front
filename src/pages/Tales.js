@@ -119,6 +119,9 @@ const Tales = () => {
           <div className="relative pt-16 pb-32 flex flex-col items-center justify-center">
             <h1>구경 하기!</h1>
             <button onClick={onTest}>Test Button</button>
+            {totalCount
+              ? `현재 총 ${totalCount}건의 글이 있습니다!`
+              : "아직 아무것도 없네요!"}
             <h1>Page</h1>
             <div className="flex flex-row gap-4">
               {pageCount

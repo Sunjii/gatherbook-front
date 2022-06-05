@@ -31,7 +31,7 @@ const Write = () => {
 
   const [open, setOpen] = useState(false);
 
-  const [maxLen, setMaxLen] = useState(50);
+  const [maxLen, setMaxLen] = useState(2);
   const [temperature, setTemperature] = useState(0.85);
   const [repetPenalty, setRepetPenalty] = useState(1.5);
 
@@ -311,9 +311,9 @@ const Write = () => {
                 <p>문장 길이 {maxLen}</p>
               </Tooltip>
               <Slider
-                min={30}
-                max={128}
-                defaultValue={50}
+                min={1}
+                max={3}
+                defaultValue={2}
                 onChange={(e) => {
                   setMaxLen(e);
                 }}
