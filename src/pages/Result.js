@@ -2,7 +2,13 @@ import React from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Navibar from "../components/Navibar";
-import { Button, Typography } from "@material-tailwind/react";
+import {
+  Button,
+  Popover,
+  PopoverContent,
+  PopoverHandler,
+  Typography,
+} from "@material-tailwind/react";
 import { SERVER_ADDRESS } from "../constants";
 import DefaultFooter from "../components/Footer";
 
@@ -45,7 +51,6 @@ const Result = () => {
     let link = window.location.href.split("/result")[0];
     link = link + `/${ind}`;
     navigator.clipboard.writeText(link);
-    alert("링크 복사 완료!");
   };
 
   return (
@@ -99,9 +104,14 @@ const Result = () => {
             </div>
           </div>
           <div>
-            <Button size="lg" onClick={onCopyClick}>
-              링크복사
-            </Button>
+            <Popover>
+              <PopoverHandler>
+                <Button size="lg" onClick={onCopyClick}>
+                  링크복사
+                </Button>
+              </PopoverHandler>
+              <PopoverContent>링크 복사 완료!</PopoverContent>
+            </Popover>
           </div>
         </div>
       </main>
