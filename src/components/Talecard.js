@@ -24,7 +24,11 @@ const TaleCard = (props) => {
 
   // src={props.imgurl}
   return (
-    <Card color="light-blue" className="w-96 mt-6" onClick={onTaleCardClick}>
+    <Card
+      color="light-blue"
+      className="w-96 mt-6 hover:scale-90 transition duration-300"
+      onClick={onTaleCardClick}
+    >
       <CardHeader color="blue-grey" className="relative h-56">
         <img
           src={`data:image/png;base64,${props.imgbs64}`}
