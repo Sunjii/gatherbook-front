@@ -1,5 +1,6 @@
-import { Chip, Typography } from "@material-tailwind/react";
+import { Chip, Typography, Alert } from "@material-tailwind/react";
 import axios from "axios";
+import { debounce } from "lodash";
 import React, { useEffect, useState } from "react";
 import { SpinnerCircular } from "spinners-react";
 import DefaultFooter from "../components/Footer";
@@ -10,7 +11,7 @@ import { SERVER_ADDRESS } from "../constants";
 const Tales = (props) => {
   //const currentPage = props.pageNum;
   const [currentPage, setCurrentPage] = useState(0);
-  const talesNum = 6;
+  const [talesNum, setTalesNum] = useState(6);
 
   const [pageCount, setPageCount] = useState(0);
   const [totalCount, setTotalCount] = useState(0);
@@ -18,8 +19,6 @@ const Tales = (props) => {
 
   const [loading, setLoading] = useState(false);
   const [serverState, setServerState] = useState(true);
-  const defaultImg =
-    "https://mblogthumb-phinf.pstatic.net/MjAxOTA0MTFfMyAg/MDAxNTU0OTY0NDExODM3.yq8kEVXlmOBw6q-5jyZceq2rxtUAfmCn00KjOfjf6CEg.K3qeB83x7EnikNTcr7XyDiB9Li9VOHcXV6t_6JUo7iog.PNG.goproblem/2gsjgna1uruvUuS7ndh9YqVwYGPLVszbFLwwpAYXZ1rkyz7vKAbhJvHdPRzCvhGfPWQdhkcqKLhnajnHFpGdgkDq3R1XmTFaFxUfKbVyyA3iDi1Fzv.png?type=w2";
 
   // tales 에는 {'id', 'title', 'author', 'text', 'imge'}가 있음
   const [tale, setTale] = useState({
@@ -123,37 +122,41 @@ const Tales = (props) => {
 
   useEffect(() => {
     getTales();
-  }, [currentPage]);
+  }, [currentPage, talesNum]);
 
   const onTest = (e) => {
     console.log(tales);
     console.log(pageCount);
   };
-
+  //bg-gradient-to-t from-myBlue to-myGreen
   return (
     <>
       <div className=""></div>
-      <div className="write-bg">
+      <div className="tales-bg2">
         <Navibar />
-        {loading ? (
-          <main className="pb-12">
-            <div className="">
-              <div className="relative pt-16x pb-32x flex flex-col items-center justify-center">
-                <Typography color="light-blue" variant="h1">
+        <div className="max-w-screen-xlt pb-20 px-4 lg:px-20">
+          {loading ? (
+            <main className="">
+              <div className="relative pt-16 pb-32x flex flex-col items-center justify-center">
+                <div className="text-center border-4 bg-opacity-70 text-white bg-light-blue-400 px-4 py-4 rounded-2xl text-4xl">
                   구경 하기!
-                </Typography>
+                </div>
                 <button className="invisible" onClick={onTest}>
                   Test Button
                 </button>
-                {totalCount
-                  ? `현재 총 ${totalCount}건의 글이 있습니다!`
-                  : "아직 아무것도 없네요!"}
+                {totalCount ? (
+                  <p className="text-white pb-4">
+                    현재 총 {totalCount}건의 글이 있습니다!
+                  </p>
+                ) : (
+                  "아직 아무것도 없네요!"
+                )}
                 <Chip value="PAGE" />
-                <div className="pt-4 flex flex-row gap-4 text-blue-400">
+                <div className="flex pb-8 flex-row gap-4 text-blue-400">
                   {pageCount
                     ? [...Array(pageCount)].map((_, idx) => (
                         <div
-                          className="cursor-pointer hover:text-white hover:scale-150 duration-200"
+                          className="cursor-pointer text-2xl hover:text-white hover:scale-150 duration-200"
                           onClick={onPageClick}
                         >
                           {idx}
@@ -162,7 +165,7 @@ const Tales = (props) => {
                     : "none"}
                 </div>
               </div>
-              <div className="px-8 flex flex-row flex-wrap gap-10">
+              <div className="flex flex-row flex-wrap items-center justify-center gap-12 px-">
                 {tales
                   ? tales.map((tale) => (
                       <TaleCard
@@ -170,7 +173,7 @@ const Tales = (props) => {
                         title={tale.title}
                         author={tale.author}
                         text={tale.text}
-                        imgbs64={tale.imgbs64 ? tale.imgbs64 : "no"}
+                        imgbs64={tale.imgbs64 ? tale.imgbs64 : ""}
                       />
                     ))
                   : "NONE"}
@@ -190,15 +193,15 @@ const Tales = (props) => {
                     : "none"}
                 </div>
               </div>
-            </div>
-          </main>
-        ) : (
-          <main>
-            <div className="relative h-screen pt-16 pb-32 flex items-center justify-center">
-              <SpinnerCircular size={150} enabled={true} />
-            </div>
-          </main>
-        )}
+            </main>
+          ) : (
+            <main>
+              <div className="relative h-screen pt-16 pb-32 flex items-center justify-center">
+                <SpinnerCircular size={150} enabled={true} />
+              </div>
+            </main>
+          )}
+        </div>
       </div>
       <DefaultFooter />
     </>
@@ -206,3 +209,8 @@ const Tales = (props) => {
 };
 
 export default Tales;
+
+// "py-8 flex flex-row flex-wrap gap-4 items-center justify-center"
+// <Typography color="light-blue" variant="h1" className="py-12">
+// 구경 하기!
+// </Typography>
