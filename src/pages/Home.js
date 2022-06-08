@@ -2,6 +2,7 @@ import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Typography } from "@material-tailwind/react";
 import React from "react";
+import { Link } from "react-router-dom";
 import DefaultFooter from "../components/Footer";
 import Navibar from "../components/Navibar";
 import TaleCard from "../components/Talecard";
@@ -10,7 +11,7 @@ import { examples } from "../constants";
 const Home = () => {
   return (
     <>
-      <main className="min-w-max">
+      <main className="">
         <div className=""></div>
         <section class="title-bg" id="title">
           <div className="relative pt-16 pb-32 flex content-center items-center justify-center">
@@ -19,7 +20,7 @@ const Home = () => {
               <div className="items-center flex flex-wrap pt-12 px-12 justify-center">
                 <div>
                   <img
-                    className="max-h-fit max-w-sm lg:max-w-xs transition-all"
+                    className="max-h-fit max-w-sm lg:max-w-md transition-all"
                     src="./image1.png"
                     alt=""
                   />
@@ -44,9 +45,9 @@ const Home = () => {
                   <h1 className="headline headline-dark">Our Project</h1>
                 </div>
                 <p>이 프로젝트는</p>
-                <a href="#" class="body-btn">
+                <Link to="/about" class="body-btn">
                   About us
-                </a>
+                </Link>
               </div>
               <div className="flex justify-center project-info-img animate-right pb-8">
                 <img alt="" src="./image3.png" />
@@ -73,7 +74,11 @@ const Home = () => {
           </div>
           <div className="flex justify-center pb-10">
             <a href="#title" class="bottom-btn">
-              <FontAwesomeIcon icon={faArrowUp} size="2x" />
+              <FontAwesomeIcon
+                icon={faArrowUp}
+                size="2x"
+                className="hover:animate-bounce"
+              />
             </a>
           </div>
           <div className="py-20 px-20 flex xl:flex-row items-center justify-center transition-all gap-8 flex-col">

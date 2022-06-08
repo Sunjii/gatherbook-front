@@ -10,10 +10,12 @@ module.exports = withMT({
       },
       colors: {
         myGrad: "#89C7E7",
-        myBlue: "#7ad0d5",
+        myBlue: "#1176ae",
+        myLightBlue: "#6dccf2",
         myGreen: "#c4ebf1",
         myYellow: "#fcd449",
         myYellowT: "#fff6b7",
+        myGolden: "#89C7E7",
       },
     },
   },

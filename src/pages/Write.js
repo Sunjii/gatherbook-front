@@ -257,12 +257,11 @@ const Write = () => {
   };
 
   return (
-    <>
-      <div className=""></div>
-      <main className="write-bg bg-blend-screen">
+    <div className="bg-blue-grey-200">
+      <main className="write-bg">
         <Navibar />
-        <div className="max-w-screen-2xlX pb-20 px-4 lg:px-40">
-          <div className="bg-opacity-70 bg-white rounded-3xl max-w-screen-xlt flex-initial flex-col justify-center items-center mt-20 ">
+        <div className="pb-20 px-4 lg:px-40 flex flex-col justify-center items-center">
+          <div className="px-12 bg-opacity-70 bg-white rounded-3xl max-w-screen-xl flex-initial mt-20 ">
             <div className="py-4 px-4">
               {serverPing ? (
                 <Tooltip content="현재 AI 서버가 작동중입니다.">
@@ -415,11 +414,9 @@ const Write = () => {
             </form>
           </div>
         </div>
-      </main>
-      <div>
         <DefaultFooter />
-      </div>
-    </>
+      </main>
+    </div>
   );
 };
 
