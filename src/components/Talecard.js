@@ -43,7 +43,7 @@ const TaleCard = (props) => {
   return (
     <Card
       color=""
-      className="shadow-2xl border-4 max-w-xs max-h-fit w-80 mt-6 hover:scale-90 transition duration-300 bg-opacity-100 scale-75x lg:scale-100 bg-myYellow"
+      className="shadow-2xl border-4 border-white max-w-xs max-h-fit w-80 mt-6 hover:scale-90 transition duration-300 bg-opacity-100 scale-75x lg:scale-100 bg-myBlue"
       onClick={onTaleCardClick}
     >
       <CardHeader color="blue-grey" className="relative h-56">
@@ -57,7 +57,7 @@ const TaleCard = (props) => {
           className="w-full h-full border-white border-4 rounded-2xl"
         />
       </CardHeader>
-      <CardBody className="text-center max-h-80">
+      <CardBody className="text-center text-white max-h-80">
         <Typography variant="h5" className="mb-2 font-woori">
           {props.title}
         </Typography>
@@ -65,10 +65,12 @@ const TaleCard = (props) => {
       </CardBody>
       <CardFooter
         divider
-        className="border-black flex items-center justify-between py-3"
+        className="border-white flex items-center justify-between py-3"
       >
-        <Typography variant="small">{props.id}</Typography>
-        <Typography variant="small" color="blue" className="flex gap-1">
+        <Typography variant="small" color="black">
+          {props.id}
+        </Typography>
+        <Typography variant="small" color="black" className="flex gap-1">
           <i className="fas fa-map-marker-alt fa-sm mt-[3px]" />
           {props.author}
         </Typography>

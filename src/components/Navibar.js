@@ -21,7 +21,11 @@ const Navibar = () => {
           className="mx-4 flex items-center font-bold hover:text-yellow-200"
           to="/"
         >
-          <img src="./logo.png" className="min-h-fit min-w-fit" />
+          <img
+            src="./logo.png"
+            alt=""
+            className="min-h-fit min-w-fit hover:scale-110 duration-200"
+          />
         </Link>
         <div className="flex items-center lg:gap-6 gap-0">
           <Link
