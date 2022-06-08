@@ -259,10 +259,10 @@ const Write = () => {
   return (
     <>
       <div className=""></div>
-      <main className="write-bg">
+      <main className="write-bg bg-blend-screen">
         <Navibar />
-        <div className="max-w-screen-xlt pb-20 px-4 lg:px-40">
-          <div className="bg-opacity-70 bg-white rounded-3xl max-w-screen-xlt flex-initial flex-col justify-center items-center my-20 pb-10">
+        <div className="max-w-screen-2xlX pb-20 px-4 lg:px-40">
+          <div className="bg-opacity-70 bg-white rounded-3xl max-w-screen-xlt flex-initial flex-col justify-center items-center mt-20 ">
             <div className="py-4 px-4">
               {serverPing ? (
                 <Tooltip content="현재 AI 서버가 작동중입니다.">
@@ -276,7 +276,11 @@ const Write = () => {
             </div>
             <div className="max-w-screen-md mx-auto py-8 text-wh">
               <div className="text-center py-4">
-                <Typography variant="h2" color="light-blue">
+                <Typography
+                  variant="h2"
+                  color="light-blue"
+                  className="font-woori"
+                >
                   동화 글쓰기
                 </Typography>
               </div>
@@ -303,6 +307,7 @@ const Write = () => {
                 variant="outlined"
               />
               <Checkbox
+                className="border-2 border-blue-400"
                 label="맞춤법 교정 사용"
                 checked={useAPI}
                 onChange={(e) => checkHandler(e)}
@@ -411,34 +416,6 @@ const Write = () => {
               </div>
             </form>
           </div>
-        </div>
-        <div>
-          <Button onClick={handleShow}>SHOW</Button>
-          <Modal show={show} onHide={handleClose}>
-            <ModalHeader closeButton>
-              <ModalTitle>Modal Head</ModalTitle>
-            </ModalHeader>
-            <ModalBody>
-              <Form>
-                <FormGroup className="mb-3" controlId="title_input">
-                  <FormLabel>Title</FormLabel>
-                  <FormControl placeholder="제목을 지어주세요!" autoFocus />
-                </FormGroup>
-                <FormGroup className="mb-3" controlId="author_input">
-                  <FormLabel>Author</FormLabel>
-                  <FormControl placeholder="당신의 이름은?" />
-                </FormGroup>
-              </Form>
-            </ModalBody>
-            <ModalFooter>
-              <Button variant="secondary" onClick={handleClose}>
-                닫기
-              </Button>
-              <Button variant="primary" onClick={handleClose}>
-                완성!
-              </Button>
-            </ModalFooter>
-          </Modal>
         </div>
       </main>
       <div>

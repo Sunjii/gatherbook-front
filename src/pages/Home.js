@@ -10,7 +10,7 @@ import { examples } from "../constants";
 const Home = () => {
   return (
     <>
-      <main>
+      <main className="min-w-max">
         <div className=""></div>
         <section class="title-bg" id="title">
           <div className="relative pt-16 pb-32 flex content-center items-center justify-center">
