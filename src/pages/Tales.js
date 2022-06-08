@@ -132,7 +132,7 @@ const Tales = (props) => {
   return (
     <>
       <div className=""></div>
-      <div className="bg-gradient-to-tr bg-myBlue from-myBluex to-myYellowx">
+      <div className="tales-bg bg-gradient-to-tr bg-myBlue from-myBluex to-myYellowx">
         <Navibar />
         <div className="max-w-screen-xlt pb-20 px-4 lg:px-20">
           {loading ? (
@@ -145,7 +145,7 @@ const Tales = (props) => {
                   Test Button
                 </button>
                 {totalCount ? (
-                  <p className="pb-4 font-dungen">
+                  <p className="pb-4 text-white font-dungen">
                     현재 총 {totalCount}건의 글이 있습니다!
                   </p>
                 ) : (
