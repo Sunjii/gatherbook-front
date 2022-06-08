@@ -21,29 +21,29 @@ const Navibar = () => {
           className="mx-4 flex items-center font-bold hover:text-yellow-200"
           to="/"
         >
-          <img src="./logo.png" />
+          <img src="./logo.png" className="min-h-fit min-w-fit" />
         </Link>
         <div className="flex items-center lg:gap-6 gap-0">
           <Link
-            className="mx-4 flex items-center font-bold hover:text-black invisible lg:visible"
+            className="mx-4 flex items-center font-bold hover:text-black invisible lg:visible duration-200"
             to="/about"
           >
             About Us
           </Link>
           <Link
-            className="mx-4 flex items-center font-bold hover:text-black invisible lg:visible"
+            className="mx-4 flex items-center font-bold hover:text-black invisible lg:visible duration-200"
             to="/write"
           >
             글쓰기
           </Link>
           <Link
-            className="mx-4 flex items-center font-bold hover:text-black invisible lg:visible"
+            className="mx-4 flex items-center font-bold hover:text-black invisible lg:visible duration-200"
             to="/tales"
           >
             구경하기
           </Link>
           <a
-            className="mx-4 flex items-center font-bold hover:text-black invisible lg:visible"
+            className="mx-4 flex items-center font-bold hover:text-black invisible lg:visible duration-200"
             href="https://github.com/boostcampaitech3/final-project-level3-nlp-06"
           >
             <FontAwesomeIcon icon={faGithub} size="2x" />

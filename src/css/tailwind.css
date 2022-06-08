@@ -942,6 +942,12 @@ html > body {
   min-height: 100px;
 }
 
+.min-h-fit {
+  min-height: -webkit-fit-content;
+  min-height: -moz-fit-content;
+  min-height: fit-content;
+}
+
 .w-max {
   width: -webkit-max-content;
   width: max-content;
@@ -1058,6 +1064,12 @@ html > body {
 .min-w-max {
   min-width: -webkit-max-content;
   min-width: max-content;
+}
+
+.min-w-fit {
+  min-width: -webkit-fit-content;
+  min-width: -moz-fit-content;
+  min-width: fit-content;
 }
 
 .max-w-\[25\%\] {

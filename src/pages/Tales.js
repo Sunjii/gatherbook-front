@@ -132,20 +132,20 @@ const Tales = (props) => {
   return (
     <>
       <div className=""></div>
-      <div className="bg-gradient-to-t from-myBlue">
+      <div className="bg-gradient-to-tr bg-myBlue from-myBluex to-myYellowx">
         <Navibar />
         <div className="max-w-screen-xlt pb-20 px-4 lg:px-20">
           {loading ? (
             <main className="">
               <div className="relative pt-16 pb-32x flex flex-col items-center justify-center">
-                <div className="text-center border-4 bg-opacity-70 text-white bg-light-blue-400 px-12 py-4 rounded-2xl text-6xl">
+                <div className="font-dungen text-center border-4 bg-opacity-70 text-white bg-light-blue-400 px-12 py-4 rounded-2xl text-6xl">
                   담벼락
                 </div>
                 <button className="invisible" onClick={onTest}>
                   Test Button
                 </button>
                 {totalCount ? (
-                  <p className="pb-4">
+                  <p className="pb-4 font-dungen">
                     현재 총 {totalCount}건의 글이 있습니다!
                   </p>
                 ) : (
@@ -178,21 +178,7 @@ const Tales = (props) => {
                     ))
                   : "NONE"}
               </div>
-              <div className="py-8 flex flex-col items-center justify-center">
-                <Chip value="PAGE" />
-                <div className="pt-4 flex flex-row gap-4 text-blue-400">
-                  {pageCount
-                    ? [...Array(pageCount)].map((_, idx) => (
-                        <div
-                          className="cursor-pointer hover:text-white hover:scale-150 duration-200"
-                          onClick={onPageClick}
-                        >
-                          {idx + 1}
-                        </div>
-                      ))
-                    : "none"}
-                </div>
-              </div>
+              <div className="py-8 flex flex-col items-center justify-center"></div>
             </main>
           ) : (
             <main>
