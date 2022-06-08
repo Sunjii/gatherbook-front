@@ -9,7 +9,7 @@ module.exports = withMT({
       },
       colors: {
         myBlue: "#40a8f0",
-        myGreen: "#a14b36",
+        myGreen: "#f5f181",
       },
     },
   },

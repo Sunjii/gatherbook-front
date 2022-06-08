@@ -42,7 +42,7 @@ const TaleCard = (props) => {
   // {`data:image/png;base64,${props.imgbs64}`}
   return (
     <Card
-      color="light-blue"
+      color="yellow"
       className="shadow-2xl border-4 max-w-xs max-h-fit w-80 mt-6 hover:scale-90 transition duration-300 bg-opacity-70 scale-75x lg:scale-100"
       onClick={onTaleCardClick}
     >
@@ -61,11 +61,11 @@ const TaleCard = (props) => {
         <Typography variant="h5" className="mb-2 font-woori">
           {props.title}
         </Typography>
-        <Typography className="">{text}</Typography>
+        <Typography className="font-bold">{text}</Typography>
       </CardBody>
       <CardFooter divider className="flex items-center justify-between py-3">
         <Typography variant="small">{props.id}</Typography>
-        <Typography variant="small" color="amber" className="flex gap-1">
+        <Typography variant="small" color="blue" className="flex gap-1">
           <i className="fas fa-map-marker-alt fa-sm mt-[3px]" />
           {props.author}
         </Typography>

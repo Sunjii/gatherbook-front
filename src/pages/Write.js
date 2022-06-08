@@ -276,11 +276,7 @@ const Write = () => {
             </div>
             <div className="max-w-screen-md mx-auto py-8 text-wh">
               <div className="text-center py-4">
-                <Typography
-                  variant="h2"
-                  color="light-blue"
-                  className="font-woori"
-                >
+                <Typography variant="h1" color="brown" className="font-woori">
                   동화 글쓰기
                 </Typography>
               </div>
@@ -293,10 +289,11 @@ const Write = () => {
                 variant="outlined"
                 color="teal"
                 className="autoTextarea"
+                success
               />
             </div>
             <div className="max-w-screen-md mx-auto pb-6">
-              <Alert color="green" className="mb-8">
+              <Alert color="brown" className="mb-8">
                 문장을 입력하는 경우에는 구두점(. ! ?)을 빼먹지 말아주세요!
               </Alert>
               <Input
@@ -305,6 +302,7 @@ const Write = () => {
                 value={text}
                 onKeyPress={onKeyPress}
                 variant="outlined"
+                success
               />
               <Checkbox
                 className="border-2 border-blue-400"
@@ -328,7 +326,7 @@ const Write = () => {
                   ? proposalList.map((proposal) => (
                       <div>
                         <Alert
-                          className="hover:bg-amber-500"
+                          className="hover:bg-amber-400 hover:text-black"
                           onClick={onProposalClick}
                         >
                           {proposal}

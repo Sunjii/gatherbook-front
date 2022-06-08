@@ -66,3 +66,8 @@ const Test = () => {
 export default Test;
 
 // <img width="180" height="180" src={{ uri: imgFrom }} alt="" />
+
+//TODO: 웹폰트 -> 궁서체
+//TODO: About Us -> 팀원소개 페이지로
+//TODO: Home page -> 프로젝트 소개란 설명 추가
+//TODO: [중요] 시연 영상 녹화 -> 목요일 오전까지

@@ -104,7 +104,7 @@ const Tales = (props) => {
   // page 클릭에 따라서 해당되는 쿼리를 돌립니다.
   const onPageClick = (e) => {
     console.log(e.target.innerText);
-    setCurrentPage(e.target.innerText);
+    setCurrentPage(e.target.innerText - 1);
   };
 
   useEffect(() => {
@@ -132,20 +132,20 @@ const Tales = (props) => {
   return (
     <>
       <div className=""></div>
-      <div className="tales-bg2">
+      <div className="bg-gradient-to-t from-myBlue">
         <Navibar />
         <div className="max-w-screen-xlt pb-20 px-4 lg:px-20">
           {loading ? (
             <main className="">
               <div className="relative pt-16 pb-32x flex flex-col items-center justify-center">
-                <div className="text-center border-4 bg-opacity-70 text-white bg-light-blue-400 px-4 py-4 rounded-2xl text-4xl">
-                  구경 하기!
+                <div className="text-center border-4 bg-opacity-70 text-white bg-light-blue-400 px-12 py-4 rounded-2xl text-6xl">
+                  담벼락
                 </div>
                 <button className="invisible" onClick={onTest}>
                   Test Button
                 </button>
                 {totalCount ? (
-                  <p className="text-white pb-4">
+                  <p className="pb-4">
                     현재 총 {totalCount}건의 글이 있습니다!
                   </p>
                 ) : (
@@ -156,10 +156,10 @@ const Tales = (props) => {
                   {pageCount
                     ? [...Array(pageCount)].map((_, idx) => (
                         <div
-                          className="cursor-pointer text-2xl hover:text-white hover:scale-150 duration-200"
+                          className="cursor-pointer text-2xl hover:text-green-600 hover:scale-150 duration-200"
                           onClick={onPageClick}
                         >
-                          {idx}
+                          {idx + 1}
                         </div>
                       ))
                     : "none"}
@@ -187,7 +187,7 @@ const Tales = (props) => {
                           className="cursor-pointer hover:text-white hover:scale-150 duration-200"
                           onClick={onPageClick}
                         >
-                          {idx}
+                          {idx + 1}
                         </div>
                       ))
                     : "none"}
