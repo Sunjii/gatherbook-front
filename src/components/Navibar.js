@@ -15,36 +15,35 @@ import { Link } from "react-router-dom";
 
 const Navibar = () => {
   return (
-    <Navbar className="bg-inherit text-blue-300 border-0 max-w-full h-14 mx-auto rounded-none">
+    <Navbar className="bg-inherit text-white border-0 max-w-full h-14 mx-auto rounded-none">
       <div className="container max-w-full flex justify-between items-center ">
         <Link
-          className="mx-4 flex items-center font-bold hover:text-amber-400"
+          className="mx-4 flex items-center font-bold hover:text-yellow-200"
           to="/"
         >
-          <FontAwesomeIcon icon={faBookBookmark} size="1x" />
-          {"　GatherBook"}
+          <img src="./logo.png" />
         </Link>
         <div className="flex items-center lg:gap-6 gap-0">
           <Link
-            className="mx-4 flex items-center font-bold hover:text-amber-400 invisible lg:visible"
+            className="mx-4 flex items-center font-bold hover:text-black invisible lg:visible"
             to="/about"
           >
             About Us
           </Link>
           <Link
-            className="mx-4 flex items-center font-bold hover:text-amber-400 invisible lg:visible"
+            className="mx-4 flex items-center font-bold hover:text-black invisible lg:visible"
             to="/write"
           >
             글쓰기
           </Link>
           <Link
-            className="mx-4 flex items-center font-bold hover:text-amber-400 invisible lg:visible"
+            className="mx-4 flex items-center font-bold hover:text-black invisible lg:visible"
             to="/tales"
           >
             구경하기
           </Link>
           <a
-            className="mx-4 flex items-center font-bold hover:text-amber-400 invisible lg:visible"
+            className="mx-4 flex items-center font-bold hover:text-black invisible lg:visible"
             href="https://github.com/boostcampaitech3/final-project-level3-nlp-06"
           >
             <FontAwesomeIcon icon={faGithub} size="2x" />
@@ -97,3 +96,6 @@ const Navibar = () => {
 };
 
 export default Navibar;
+
+// <FontAwesomeIcon icon={faBookBookmark} size="1x" />
+// {"　GatherBook"}

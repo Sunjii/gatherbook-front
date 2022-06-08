@@ -6,10 +6,14 @@ module.exports = withMT({
     extend: {
       fontFamily: {
         woori: ["WooridaumB"],
+        dungen: ["DungGeunMo"],
       },
       colors: {
-        myBlue: "#40a8f0",
-        myGreen: "#f5f181",
+        myGrad: "#89C7E7",
+        myBlue: "#7ad0d5",
+        myGreen: "#c4ebf1",
+        myYellow: "#fcd449",
+        myYellowT: "#fff6b7",
       },
     },
   },
