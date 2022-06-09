@@ -44,9 +44,12 @@ const Home = () => {
                   <h1 className="headText">Discover</h1>
                   <h1 className="headline headline-dark">Our Project</h1>
                 </div>
-                <p>이 프로젝트는</p>
+                <p>
+                  이 프로젝트에서는 GPT-3와 StyleGAN을 이용하여 동화를
+                  생성합니다.
+                </p>
                 <Link to="/about" class="body-btn">
-                  About us
+                  더 알아보기
                 </Link>
               </div>
               <div className="flex justify-center project-info-img animate-right pb-8">

@@ -212,6 +212,13 @@ const Write = () => {
     let title = prompt("제목을 입력해주세요!", "제목없음");
     let author = prompt("작가의 이름은 무엇인가요?", "익명");
 
+    if (!title) {
+      title = "제목 없음";
+    }
+    if (!author) {
+      author = "익명";
+    }
+
     fd.append("author", author);
     fd.append("title", title);
 
