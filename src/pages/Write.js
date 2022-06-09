@@ -189,6 +189,7 @@ const Write = () => {
 
   // 제출 -> text area & image 서버로 전송
   const handleSubmit = async (e) => {
+    console.log(process.env);
     e.preventDefault();
     if (!result) {
       alert("완성된 글이 없습니다!");

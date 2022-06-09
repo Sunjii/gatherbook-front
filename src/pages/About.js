@@ -87,12 +87,7 @@ const About = () => {
                 </div>
               </div>
             </div>
-            <div className="flex flex-col items-center justify-center">
-              <img
-                src="./duck.jpg"
-                alt=""
-                className="scale-50 rounded-3xl border-8 border-myBlue shadow-2xl"
-              />
+            <div className="pt-20 flex flex-col items-center justify-center">
               <h1 className="about-headline font-dungen text-6xl">Reference</h1>
               <div className="bg-white px-12 py-12 opacity-80 rounded-2xl">
                 <p className="text-lg">Dataset</p>
