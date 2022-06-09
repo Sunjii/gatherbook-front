@@ -15,7 +15,6 @@ import {
   Tooltip,
   Typography,
 } from "@material-tailwind/react";
-import { SERVER_ADDRESS } from "../constants";
 import DefaultFooter from "../components/Footer";
 import {
   Button,
@@ -122,7 +121,7 @@ const Write = () => {
       // POST request //
       const s_t = new Date();
       await axios
-        .post(`${SERVER_ADDRESS}/predict`, fd, {
+        .post(`${process.env.REACT_APP_SERVER_ADDRESS}/predict`, fd, {
           headers: {
             "Content-Type": `stringpart/form-data`,
           },
@@ -217,7 +216,7 @@ const Write = () => {
 
     console.log(fd);
     await axios
-      .post(`${SERVER_ADDRESS}/submit`, fd, {
+      .post(`${process.env.REACT_APP_SERVER_ADDRESS}/submit`, fd, {
         headers: {
           "Content-Type": `multipart/form-data;`,
         },
@@ -243,7 +242,7 @@ const Write = () => {
   const onPingPong = (e) => {
     //e.preventDefault();
     const res = axios
-      .get(`${SERVER_ADDRESS}/`)
+      .get(`${process.env.REACT_APP_SERVER_ADDRESS}/`)
       //.get("http://naver.com")
       .then(function (res) {
         console.log(res);
@@ -260,7 +259,7 @@ const Write = () => {
     <div className="bg-blue-grey-200">
       <main className="write-bg">
         <Navibar />
-        <div className="pb-20 px-4 lg:px-40 flex flex-col justify-center items-center">
+        <div className="pb-20 px-2 md:px-4 lg:px-20 flex flex-col justify-center items-center">
           <div className="px-12 bg-opacity-70 bg-white rounded-3xl max-w-screen-xl flex-initial mt-20 ">
             <div className="py-4 px-4">
               {serverPing ? (
@@ -347,7 +346,7 @@ const Write = () => {
                   setMaxLen(e);
                 }}
               />
-              <Tooltip content="높을수록 AI가 자유롭게 글을 써내려갑니다.">
+              <Tooltip content="높을수록 AI가 자유롭게 글을 써내려갑니다. 추천:0.85">
                 <p>Temperature {temperature}</p>
               </Tooltip>
               <Slider
@@ -358,7 +357,7 @@ const Write = () => {
                   setTemperature(e / 100);
                 }}
               />
-              <Tooltip content="높을수록 단어의 반복을 방지합니다.">
+              <Tooltip content="높을수록 단어의 반복을 방지합니다. 추천:1.5">
                 <p>Repetition Penalty {repetPenalty}</p>
               </Tooltip>
               <Slider
@@ -376,10 +375,8 @@ const Write = () => {
                   <p className="text-red-800">no image</p>
                 ) : (
                   <img
-                    className=""
+                    className="h-28 transition-all duration-300 md:h-40 lg:h-40"
                     alt=""
-                    width="180"
-                    height="180"
                     src={imgFile}
                   />
                 )}
@@ -393,23 +390,23 @@ const Write = () => {
                     onChange={onImageUpload}
                     style={{ display: "none" }}
                   />
-                  <div className="flex gap-4">
-                    <Tooltip content="이미지를 올리면 동화풍으로 바꿔줍니다.">
-                      <button
-                        className="py-2 px-4 rounded-lg shadow-md text-white bg-blue-500 hover:bg-blue-800"
-                        onClick={onImageUploadBtnClick}
-                      >
-                        사진 업로드
-                      </button>
-                    </Tooltip>
-                    <button
-                      className="py-2 px-4 rounded-lg shadow-md text-white bg-blue-500 hover:bg-blue-800"
-                      type="submit"
-                    >
-                      완성! 제출!
-                    </button>
-                  </div>
                 </div>
+              </div>
+              <div className="py-8 gap-4 flex flex-col sm:flex-row">
+                <Tooltip content="이미지를 올리면 동화풍으로 바꿔줍니다.">
+                  <button
+                    className="py-2 px-2 rounded-lg shadow-md text-white bg-blue-500 hover:bg-blue-800"
+                    onClick={onImageUploadBtnClick}
+                  >
+                    사진 업로드
+                  </button>
+                </Tooltip>
+                <button
+                  className="py-2 px-2 rounded-lg shadow-md text-white bg-blue-500 hover:bg-blue-800"
+                  type="submit"
+                >
+                  완성! 제출!
+                </button>
               </div>
             </form>
           </div>

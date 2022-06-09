@@ -6,7 +6,6 @@ import { SpinnerCircular } from "spinners-react";
 import DefaultFooter from "../components/Footer";
 import Navibar from "../components/Navibar";
 import TaleCard from "../components/Talecard";
-import { SERVER_ADDRESS } from "../constants";
 
 const Tales = (props) => {
   //const currentPage = props.pageNum;
@@ -32,7 +31,7 @@ const Tales = (props) => {
 
   const getTalesCount = async (e) => {
     const response = await axios
-      .get(`${SERVER_ADDRESS}/tales`, { timeout: 10000 })
+      .get(`${process.env.REACT_APP_SERVER_ADDRESS}/tales`, { timeout: 10000 })
       .then((res) => {
         if (res) {
           // rest.data 에는 전체 개수가 옵니다.
@@ -71,7 +70,9 @@ const Tales = (props) => {
       idx++
     ) {
       await axios
-        .get(`${SERVER_ADDRESS}/tales/${idx}`, { timeout: 10000 })
+        .get(`${process.env.REACT_APP_SERVER_ADDRESS}/tales/${idx}`, {
+          timeout: 10000,
+        })
         .then((res) => {
           // res 에는 데이터가 옵니다..
           if (res.data.message) {

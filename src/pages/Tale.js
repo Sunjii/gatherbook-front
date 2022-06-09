@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import DefaultFooter from "../components/Footer";
 import Navibar from "../components/Navibar";
-import { SERVER_ADDRESS } from "../constants";
 
 const Tale = (props) => {
   const param = useParams();
@@ -14,7 +13,9 @@ const Tale = (props) => {
 
   const getTale = async (e) => {
     await axios
-      .get(`${SERVER_ADDRESS}/tales/${param.id}`, { timeout: 10000 })
+      .get(`${process.env.REACT_APP_SERVER_ADDRESS}/tales/${param.id}`, {
+        timeout: 10000,
+      })
       .then((res) => {
         // res 에는 데이터가 옵니다..
         if (res.data.message) {

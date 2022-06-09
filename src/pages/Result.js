@@ -9,7 +9,7 @@ import {
   PopoverHandler,
   Typography,
 } from "@material-tailwind/react";
-import { SERVER_ADDRESS } from "../constants";
+//import { SERVER_ADDRESS } from "../constants";
 import DefaultFooter from "../components/Footer";
 
 const Result = () => {
