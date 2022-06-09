@@ -12,7 +12,7 @@ import {
 } from "@material-tailwind/react";
 import React from "react";
 import { Link } from "react-router-dom";
-
+//./logo.png
 const Navibar = () => {
   return (
     <Navbar className="bg-inherit text-white border-0 max-w-full h-14 mx-auto rounded-none">
@@ -22,8 +22,8 @@ const Navibar = () => {
           to="/"
         >
           <img
-            src="./logo.png"
-            alt=""
+            src="https://i.imgur.com/u27hxPa.png"
+            alt="GatherBook"
             className="min-h-fit min-w-fit hover:scale-110 duration-200"
           />
         </Link>

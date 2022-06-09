@@ -11,6 +11,7 @@ import {
 } from "@material-tailwind/react";
 //import { SERVER_ADDRESS } from "../constants";
 import DefaultFooter from "../components/Footer";
+import KakaoShareButton from "../components/KakaoShare";
 
 const Result = () => {
   const location = useLocation();
@@ -40,6 +41,18 @@ const Result = () => {
     //setStyledImage(URL.createObjectURL(location.state.res.styledImage));
   }, []);
 
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://developers.kakao.com/sdk/js/kakao.js";
+    script.async = true;
+
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+
   console.log(ind);
   console.log(location.state);
   console.log(`${styledImage}`);
@@ -49,19 +62,18 @@ const Result = () => {
     // 링크를 클립보드로 복사합니다.
     // copy -> .../tales/ind
     let link = window.location.href.split("/result")[0];
-    link = link + `/${ind}`;
+    link = link + `/tales/${ind}`;
     console.log(link);
     navigator.clipboard.writeText(link);
   };
 
   return (
     <>
-      <div className="">
+      <div className=""></div>
+      <main className="write-bg">
         <Navibar />
-      </div>
-      <main>
-        <div className="relative pt-16 pb-32 flex flex-col content-center items-center justify-center h-screen">
-          <div className="w-full lg:w-6/12 px-4 text-center pb-8">
+        <div className="relative pt-16 pb-32 flex flex-col content-center items-center justify-center xh-screen">
+          <div className="w-fullx lg:w-6/12 px-6 py-12 text-center bg-white bg-opacity-70 rounded-3xl">
             <div>
               {title ? (
                 <Typography
@@ -79,7 +91,7 @@ const Result = () => {
                 {author ? (
                   <Typography variant="h5">{author}</Typography>
                 ) : (
-                  "author not found"
+                  "author not found "
                 )}
                 {resultText ? (
                   <Typography
@@ -89,7 +101,7 @@ const Result = () => {
                     {resultText}
                   </Typography>
                 ) : (
-                  "text not found"
+                  "text not found "
                 )}
                 {styledImage ? (
                   <img
@@ -112,6 +124,7 @@ const Result = () => {
               <PopoverContent>링크 복사 완료!</PopoverContent>
             </Popover>
           </div>
+          <KakaoShareButton />
         </div>
       </main>
       <DefaultFooter />

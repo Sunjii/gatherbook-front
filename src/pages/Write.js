@@ -340,7 +340,7 @@ const Write = () => {
               </Tooltip>
               <Slider
                 min={1}
-                max={3}
+                max={5}
                 defaultValue={2}
                 onChange={(e) => {
                   setMaxLen(e);
@@ -362,7 +362,7 @@ const Write = () => {
               </Tooltip>
               <Slider
                 min={10}
-                max={50}
+                max={20}
                 defaultValue={15}
                 onChange={(e) => {
                   setRepetPenalty(e / 10);
