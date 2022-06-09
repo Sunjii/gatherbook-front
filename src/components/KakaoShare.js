@@ -21,7 +21,7 @@ const KakaoShareButton = () => {
         content: {
           title: "타이틀",
           description: "#리액트 #카카오 #공유버튼",
-          imageUrl: "IMAGE_URL", // i.e. process.env.FETCH_URL + '/logo.png'
+          imageUrl: "https://i.imgur.com/j8Khf0R.png", // i.e. process.env.FETCH_URL + '/logo.png'
           link: {
             mobileWebUrl: window.location.href,
             webUrl: window.location.href,
