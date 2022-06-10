@@ -92,11 +92,38 @@ const About = () => {
               <div className="bg-white px-12 py-12 opacity-80 rounded-2xl">
                 <p className="text-lg">Dataset</p>
                 <ul className="text-left">
-                  <li>- 어린이 전래동화 (청와대)</li>
-                  <li>- 국립국어원 모두의 말뭉치 비출판물 데이터</li>
-                  <li>- 그림형제 동화</li>
-                  <li>- 이솝우화 동화</li>
-                  <li>- 신춘문예 당선작</li>
+                  <a
+                    href="http://18children.president.pa.go.kr/our_space/fairy_tales.php"
+                    target="_blank"
+                    className="hover:text-myBlue"
+                  >
+                    - 어린이 전래동화 (청와대)
+                  </a>
+                  <br />
+                  <a
+                    href="https://corpus.korean.go.kr/main.do"
+                    target="_blank"
+                    className="hover:text-myBlue"
+                  >
+                    - 국립국어원 모두의 말뭉치 비출판물 데이터
+                  </a>
+                  <br />
+                  <a
+                    href="https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=osy2201&logNo=221179543994"
+                    target="_blank"
+                    className="hover:text-myBlue"
+                  >
+                    - 그림형제 동화
+                  </a>
+                  <br />
+                  <a
+                    href="https://m.blog.naver.com/osy2201/221183426988"
+                    target="_blank"
+                    className="hover:text-myBlue"
+                  >
+                    - 이솝우화 동화
+                  </a>
+                  <li>- 신춘문예 당선작: 2021~2022 강원일보 외 15개 신문사</li>
                 </ul>
                 <hr />
                 <p className="text-lg">Paper</p>
@@ -117,6 +144,7 @@ const About = () => {
                 >
                   동물 군 스티커 제작자: Stickers - Flaticon
                 </a>
+                <br />
               </div>
             </div>
           </div>
