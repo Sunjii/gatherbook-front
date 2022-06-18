@@ -209,7 +209,7 @@ const Write = () => {
 
     // 작가 및 제목 입력창 생성
     //handleShow();
-    let title = prompt("제목을 입력해주세요!", "제목없음");
+    let title = prompt("제목을 입력해주세요!", "제목 없음");
     let author = prompt("작가의 이름은 무엇인가요?", "익명");
 
     if (!title) {
